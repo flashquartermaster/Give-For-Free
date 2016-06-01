@@ -1,5 +1,11 @@
 <ion-view view-title="Give">
   <ion-content class="padding">
-    <h1>Give</h1>
+    <div class="charity-grid-item" collection-repeat="charity in charities"
+       item-height="130" item-width="33%">
+      <a href="#/tab/give/{{charity.id}}">
+        <img ng-src="{{charity.thumbnail}}">
+      </a>
+      <p>{{charity.name}}</p>
+    </div>
   </ion-content>
 </ion-view>

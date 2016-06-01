@@ -1,50 +1,79 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
+.factory('Charities', function() {
   // Some fake testing data
-  var chats = [{
+  var charities = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    name: 'Charity 1',
+    thumbnail: 'img/breast_cancer.png'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
+    name: 'Charity 2',
+    thumbnail: 'img/breast_cancer.png'
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
+    name: 'Charity 3',
+    thumbnail: 'img/breast_cancer.png'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
+    name: 'Charity 4',
+    thumbnail: 'img/breast_cancer.png'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
+    name: 'Charity 5',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 5,
+    name: 'Charity 6',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 6,
+    name: 'Charity 7',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 7,
+    name: 'Charity 8',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 8,
+    name: 'Charity 9',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 9,
+    name: 'Charity 10',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 10,
+    name: 'Charity 11',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 11,
+    name: 'Charity 12',
+    thumbnail: 'img/breast_cancer.png'
+  }, {
+    id: 12,
+    name: 'Charity 13',
+    thumbnail: 'img/breast_cancer.png'
   }];
 
   return {
+
     all: function() {
-      return chats;
+      return charities;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+
+    /*remove: function(chat) {
+      charities.splice(chats.indexOf(charities), 1);
+    },*/
+
+    get: function(charityId) {
+      for (var i = 0; i < charities.length; i++) {
+        if (charities[i].id === parseInt(charityId)) {
+          return charities[i];
         }
       }
       return null;
     }
+
   };
 });
