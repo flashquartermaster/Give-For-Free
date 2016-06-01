@@ -6,10 +6,6 @@ angular.module('starter.controllers', [])
 
   $scope.charities = Charities.all();
 
-  $scope.remove = function(chat) {
-    Charities.remove(chat);
-  }
-  
 })
 
 .controller('SettingsCtrl', function($scope) {});
