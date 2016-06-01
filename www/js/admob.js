@@ -27,11 +27,13 @@ function initApp() {
 
     AdMob.createBanner( {
         adId: admobid.banner,
-        //isTesting: true,
+        isTesting: true,
         overlap: false,
         offsetTopBar: false,
+        adSize:'SMART_BANNER',
         position: AdMob.AD_POSITION.BOTTOM_CENTER,
-        bgColor: 'black'
+        bgColor: 'black',
+        autoShow: true
     } );
 
     /*AdMob.prepareInterstitial({
