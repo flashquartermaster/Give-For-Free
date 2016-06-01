@@ -59,6 +59,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.give-detail', {
+    url: '/give/:charityId',
+    views: {
+      'tab-give': {
+        templateUrl: 'templates/give-detail.html',
+        controller: 'GiveDetailCtrl'
+      }
+    }
+  })
+
   .state('tab.settings', {
     url: '/settings',
     views: {
