@@ -9,12 +9,13 @@
       </div>
     </div>
     <div class="row">
-      {{charity.description}}
+      <p>{{charity.description}}</p>
     </div>
     <div class="row">
-      <a href="{{charity.url}}"
+      <p>Visit the website for <a href="{{charity.url}}"
         onclick="window.open(this.href, ‘_system’, ‘location=yes’);  return false;">
         {{charity.name}}</a>
+      </p>
     </div>
   </ion-content>
 </ion-view>
