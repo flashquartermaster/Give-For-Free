@@ -1,5 +1,35 @@
 angular.module('starter.services', [])
 
+.factory('AdUtil', function(){
+  return {
+    showBannerAd: function (bannerId){
+      console.log('<GFF> GLOBAL showBannerAd AdUnit: ', bannerId);
+
+      AdMob.removeBanner();
+
+      AdMob.createBanner( {
+        adId: bannerId,
+        isTesting: true,//Global testing switch
+        overlap: false,
+        offsetTopBar: false,
+        adSize:'SMART_BANNER',
+        position: AdMob.AD_POSITION.BOTTOM_CENTER,
+        overlap:false,
+        bgColor: 'black',
+        autoShow: true,
+      });
+    }
+
+    /*showInterstitialAd: function(interstitialId){
+    AdMob.prepareInterstitial({
+          adId: interstitialId,
+          autoShow: true
+      });
+
+    }*/
+  }
+})
+
 .factory('DeveloperSettings', function(){
 
   var platformSettings = [{

@@ -1,17 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, DeveloperSettings) {
+.controller('HomeCtrl', function($scope, DeveloperSettings, AdUtil) {
 
   $scope.developerSettings = DeveloperSettings.get();
 
-  $scope.$on('$ionicView.enter', function() {
-
-    console.log('<GFF> Platform: ', $scope.developerSettings.id);
-
+  function showBannerAd() {
+    console.log('<GFF> HomeCtrl showBannerAd AdUnit: ', $scope.developerSettings.banner);
     AdMob.removeBanner();
     AdMob.createBanner( {
         adId: $scope.developerSettings.banner,
-        isTesting: true,
+        //isTesting: true,
         overlap: false,
         offsetTopBar: false,
         adSize:'SMART_BANNER',
@@ -20,14 +18,12 @@ angular.module('starter.controllers', [])
         bgColor: 'black',
         autoShow: true
     } );
+  }
 
-    console.log('<GFF> Developer AdUnit: ', $scope.developerSettings.banner);
+  $scope.$on('$ionicView.enter', showBannerAd );
 
-    /*AdMob.prepareInterstitial({
-        adId: $scope.developerSettings.interstitial,
-        autoShow: true
-    });*/
-  })
+  //Why does this not fucking work and breaks the layout of tab-home.html it works everywhere else?????
+  //$scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.developerSettings.banner ) );
 
 })
 
@@ -35,29 +31,9 @@ angular.module('starter.controllers', [])
   $scope.charities = Charities.all();
 })
 
-.controller('GiveDetailCtrl', function($scope, $stateParams, Charities ){
-
+.controller('GiveDetailCtrl', function($scope, $stateParams, Charities, AdUtil ){
   $scope.charity = Charities.get($stateParams.charityId);
-
-  $scope.$on('$ionicView.enter', function() {
-      AdMob.removeBanner();
-      AdMob.createBanner({
-         adId: $scope.charity.banner,
-         isTesting: true,
-         offsetTopBar: true,
-         adSize:'SMART_BANNER',
-         position: AdMob.AD_POSITION.BOTTOM_CENTER,
-         bgColor: 'black',
-         autoShow: true,
-         /*success: function(){
-           //alert('New banner');
-         },
-         error: function(){
-           //alert('failed to create banner');
-         }*/
-     });
-     console.log('<GFF> Charity AdUnit: ', $scope.charity.banner);
-  })
+  $scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.charity.banner ) );
 })
 
 .controller('SettingsCtrl', function($scope) {});
