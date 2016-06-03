@@ -6,7 +6,6 @@ angular.module('starter.services', [])
       console.log('<GFF> GLOBAL showBannerAd AdUnit: ', bannerId);
 
       AdMob.removeBanner();
-
       AdMob.createBanner( {
         adId: bannerId,
         isTesting: true,//Global testing switch

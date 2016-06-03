@@ -5,15 +5,15 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" href="#/tab/home">
+  <ion-tab title="Home" icon="ion-home" href="#/tab/home">
     <ion-nav-view name="tab-home"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Give" icon-off="ion-heart" icon-on="ion-heart" href="#/tab/give">
+  <ion-tab title="Give" icon="ion-heart" href="#/tab/give" on-select="giveTabSelected()">
     <ion-nav-view name="tab-give"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Settings" icon-off="ion-gear-a" icon-on="ion-gear-a" href="#/tab/settings">
+  <ion-tab title="Settings" icon="ion-gear-a" href="#/tab/settings">
     <ion-nav-view name="tab-settings"></ion-nav-view>
   </ion-tab>
 

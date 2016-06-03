@@ -1,5 +1,27 @@
 angular.module('starter.controllers', [])
 
+.controller('TabCtrl', function($scope, $ionicHistory, $state, $ionicTabsDelegate) {
+
+  $scope.giveClick = false;
+  
+  $scope.giveTabSelected = function(){
+    $scope.giveClick = true;
+  }
+
+  $scope.$on('$ionicView.enter', function() {
+     var currentStateName = $ionicHistory.currentStateName();
+
+     if( currentStateName == 'tab.give-detail' && $scope.giveClick){
+       $ionicHistory.nextViewOptions({
+          disableAnimate: true
+        });
+        $state.go('tab.give');
+     }
+
+     $scope.giveClick = false;
+  })
+})
+
 .controller('HomeCtrl', function($scope, DeveloperSettings, AdUtil) {
 
   $scope.developerSettings = DeveloperSettings.get();
