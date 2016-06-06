@@ -1,5 +1,8 @@
 <ion-view view-title="Give">
+
   <ion-content class="padding">
+
+    <!-- Using Grid -->
     <div class="charity-grid-item" collection-repeat="charity in charities"
        item-height="130" item-width="33%">
       <a href="#/tab/give/{{charity.id}}">
@@ -7,5 +10,25 @@
       </a>
       <p>{{charity.name}}</p>
     </div>
+
+    <!-- Using List -->
+    <!--
+    <ion-list show-reorder="false" can-swipe="true">
+
+      <ion-item collection-repeat="charity in charities"
+                class="item-thumbnail-left item-icon-right"
+                href="#/tab/give/{{charity.id}}">
+
+        <img ng-src="img/breast_cancer_small.png">
+        <h2>{{charity.name}}</h2>
+
+        <i class="icon ion-ios-arrow-left"></i>
+        <ion-option-button class="button-assertive">Disable</ion-option-button>
+        <ion-reorder-button class="ion-drag"></ion-reorder-button>
+
+      </ion-item>
+
+    </ion-list>
+  -->
   </ion-content>
 </ion-view>
