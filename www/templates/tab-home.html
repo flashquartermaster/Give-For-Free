@@ -1,23 +1,36 @@
 <ion-view view-title="Give For Free">
   <ion-content>
-    <h2>Welcome To Give For Free</h2>
-    <p>Simply tap on the heart and choose a charity to support and wait for the advert to load or alternatively
-      choose the top one from the list and swipe left and right through them all.</p>
-    <p>Every view will generate money for your chosen charity.</p>
-    <p>If you have a special chosen charity you can leave its page open the the adverts will refresh generating
-      more money for them.</p>
-    <p>Easy :)</p>
-    <p>Thank you.</p>
-    <p>For more information visit <a href="http://www.giveforfree.co.uk"
-      onclick="window.open(this.href, ‘_system’, ‘location=yes’);  return false;">
-      Give For Free</a></p>
-    <p>For support please contact <a href="mailto:support@giveforfree.co.uk">support@giveforfree.co.uk</a></p>
-    </p>
-      <button class="button button-icon icon ion-social-facebook" on-tap=""></button>
-      <button class="button button-icon icon ion-social-twitter" on-tap=""></button>
-    </p>
+    
+    <div class="card">
 
-    <!--<p>{{developerSettings}}</p>-->
+      <div class="item item-divider">
+        <h2>Welcome To Give For Free</h2>
+      </div>
+
+      <div class="item item-text-wrap">
+        <p>Simply tap on the heart and choose a charity to support and wait for the advert to load or alternatively
+          choose the top one from the list and swipe left and right through them all.</p>
+        <p>Every view will generate money for your chosen charity.</p>
+        <p>If you have a special chosen charity you can leave its page open the the adverts will refresh generating
+          more money for them.</p>
+        <p>Easy :) Thank you. <a href="http://www.giveforfree.co.uk"
+          onclick="window.open(this.href, ‘_system’, ‘location=yes’);  return false;">
+          More information</a></p>
+      </div>
+
+      <!--
+      <div class="item item-text-wrap">
+        <p>{{developerSettings}}</p>
+      </div>
+      -->
+
+      <div class="item item-divider">
+        <button class="button button-icon icon ion-email" on-tap=""></button>
+        <button class="button button-icon icon ion-social-facebook" on-tap=""></button>
+        <button class="button button-icon icon ion-social-twitter" on-tap=""></button>
+      </div>
+
+    </div>
 
   </ion-content>
 </ion-view>
