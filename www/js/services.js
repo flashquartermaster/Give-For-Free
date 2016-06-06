@@ -31,6 +31,8 @@ angular.module('starter.services', [])
 
 .factory('Settings', function($localStorage){
 
+  //window.localStorage.clear();
+
   $localStorage.$default({
       platformSettings: [{
         id: 'ios',
@@ -45,8 +47,26 @@ angular.module('starter.services', [])
         banner: 'ca-app-pub-9425381356824619/7405198034',
         interstitial: 'ca-app-pub-9425381356824619/6463835232'
       }],
-      adType: 'banner',//or interstitial
-      locations: ['world','uk']
+
+      adTypes: [{
+        id: 0,
+        name: 'Banner',
+        isOn: true
+      },{
+        id: 1,
+        name: 'Full Screen',
+        isOn: false
+      }],
+
+      locations: [{
+        id: 0,
+        name:'World',
+        isOn: true
+      },{
+        id: 1,
+        name:'Uk',
+        isOn: false
+      }]
   });
 
   return {
@@ -59,7 +79,39 @@ angular.module('starter.services', [])
         return $localStorage.platformSettings[2];
       }
       return null;
-    }
+    },
+
+    getAdTypes: function(){
+      return $localStorage.adTypes;
+    },
+
+    toggleAdType: function(){
+      var adTypes = $localStorage.adTypes;
+      var arrayLength = adTypes.length;
+      for (var i = 0; i < arrayLength; i++) {
+          adTypes[i].isOn = !adTypes[i].isOn;
+      }
+      $localStorage.adTypes = adTypes;
+    },
+
+    getLocations: function(){
+      return $localStorage.locations;
+    },
+    /*
+    setLocation: function(location,isOn){
+      var locations = $localStorage.locations;
+      if( isOn ){
+        locations.push( location );
+      } else {
+        for( var item in locations ){
+          if( item == location ){
+            var index = locations.indexOf( item );
+            locations.splice( index, 1 );
+          }
+        }
+      }
+      $localStorage.locations = locations;
+    }*/
 
   };
 })

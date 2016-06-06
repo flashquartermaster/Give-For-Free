@@ -70,6 +70,19 @@ angular.module('starter.controllers', [])
   $scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.charity.banner ) );
 })
 
-.controller('SettingsCtrl', function($scope, $localStorage, $sessionStorage) {
-  $scope.$storage = $localStorage;
+.controller('SettingsCtrl', function($scope, Settings, $state, $ionicHistory) {
+  $scope.adTypes = Settings.getAdTypes();
+
+  $scope.onAdTypeCheckboxTap = function(){
+    Settings.toggleAdType();
+    $ionicHistory.clearCache([$state.current.name]).then(function() {
+      $state.reload();
+    });
+  }
+
+  $scope.locations = Settings.getLocations();
+
+  $scope.onToggleLocationSetting = function( location ){
+    console.log('<GFF> onToggleLocationSetting changed to ' + JSON.stringify(location));
+  }
 });

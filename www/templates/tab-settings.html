@@ -1,5 +1,34 @@
 <ion-view view-title="Settings">
   <ion-content class="padding">
-    <h1>Settings</h1>
+
+    <ion-list>
+
+      <ion-item class="item item-divider item-text-wrap">
+        Choose type of adverts
+        <p>Full screen ads will generate more revenue for your chosen charity</p>
+      </ion-item>
+
+      <ion-checkbox ng-repeat="adType in adTypes"
+                    ng-model="value"
+                    ng-checked="{{adType.isOn}}"
+                    ng-change="onAdTypeCheckboxTap();">
+                    {{ adType.name }}
+      </ion-checkbox>
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-item class="item item-divider">
+        Use these locations
+      </ion-item>
+
+        <ion-toggle toggle-class="toggle"
+        ng-repeat="location in locations"
+        ng-model=value
+        ng-change="onToggleLocationSetting( location )">{{location.name}}</ion-toggle>
+
+    </ion-list>
+
   </ion-content>
 </ion-view>
