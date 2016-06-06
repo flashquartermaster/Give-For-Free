@@ -22,15 +22,15 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('HomeCtrl', function($scope, DeveloperSettings, AdUtil) {
+.controller('HomeCtrl', function($scope, Settings, AdUtil) {
 
-  $scope.developerSettings = DeveloperSettings.get();
+  $scope.platformSettings = Settings.getPlatformSettings();
 
   function showBannerAd() {
-    console.log('<GFF> HomeCtrl showBannerAd AdUnit: ', $scope.developerSettings.banner);
+    console.log('<GFF> HomeCtrl showBannerAd AdUnit: ', $scope.platformSettings.banner);
     AdMob.removeBanner();
     AdMob.createBanner( {
-        adId: $scope.developerSettings.banner,
+        adId: $scope.platformSettings.banner,
         //isTesting: true,
         overlap: false,
         offsetTopBar: false,
@@ -70,4 +70,6 @@ angular.module('starter.controllers', [])
   $scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.charity.banner ) );
 })
 
-.controller('SettingsCtrl', function($scope) {});
+.controller('SettingsCtrl', function($scope, $localStorage, $sessionStorage) {
+  $scope.$storage = $localStorage;
+});

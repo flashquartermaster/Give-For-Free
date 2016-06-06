@@ -29,30 +29,34 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('DeveloperSettings', function(){
+.factory('Settings', function($localStorage){
 
-  var platformSettings = [{
-    id: 'ios',
-    banner: 'ca-app-pub-9425381356824619/4451731633',
-    interstitial: 'ca-app-pub-9425381356824619/8219770039'
-  }, {
-    id: 'android',
-    banner: 'ca-app-pub-9425381356824619/5928464836',
-    interstitial: 'ca-app-pub-9425381356824619/3510368838'
-  }, {
-    id: 'wp8',
-    banner: 'ca-app-pub-9425381356824619/7405198034',
-    interstitial: 'ca-app-pub-9425381356824619/6463835232'
-  }];
+  $localStorage.$default({
+      platformSettings: [{
+        id: 'ios',
+        banner: 'ca-app-pub-9425381356824619/4451731633',
+        interstitial: 'ca-app-pub-9425381356824619/8219770039'
+      }, {
+        id: 'android',
+        banner: 'ca-app-pub-9425381356824619/5928464836',
+        interstitial: 'ca-app-pub-9425381356824619/3510368838'
+      }, {
+        id: 'wp8',
+        banner: 'ca-app-pub-9425381356824619/7405198034',
+        interstitial: 'ca-app-pub-9425381356824619/6463835232'
+      }],
+      adType: 'banner',//or interstitial
+      locations: ['world','uk']
+  });
 
   return {
-    get: function() {
+    getPlatformSettings: function() {
       if (/(ipod|iphone|ipad)/i.test(navigator.userAgent) ){
-        return platformSettings[0];
+        return $localStorage.platformSettings[0];
       } else if( /(android)/i.test(navigator.userAgent) ) {
-        return platformSettings[1];
+        return $localStorage.platformSettings[1];
       } else {
-        return platformSettings[2];
+        return $localStorage.platformSettings[2];
       }
       return null;
     }

@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, $rootScope, DeveloperSettings, AdUtil) {
+.run(function($ionicPlatform, $rootScope, Settings, AdUtil) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,8 +22,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
 
     function initDeveloperAd(){
-      $rootScope.developerSettings = DeveloperSettings.get();
-      AdUtil.showBannerAd( $rootScope.developerSettings.banner );
+      $rootScope.platformSettings = Settings.getPlatformSettings();
+      AdUtil.showBannerAd( $rootScope.platformSettings.banner );
     }
 
     document.addEventListener('deviceready', initDeveloperAd, false);
