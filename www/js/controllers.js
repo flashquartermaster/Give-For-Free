@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('TabCtrl', function($scope, $ionicHistory, $state, $ionicTabsDelegate) {
 
   $scope.giveClick = false;
-  
+
   $scope.giveTabSelected = function(){
     $scope.giveClick = true;
   }
@@ -46,6 +46,18 @@ angular.module('starter.controllers', [])
 
   //Why does this not fucking work and breaks the layout of tab-home.html it works everywhere else?????
   //$scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.developerSettings.banner ) );
+
+  $scope.onEmailTap = function(){
+    window.open('mailto:support@giveforfree.co.uk', '_system', 'location=yes');  return false;
+  }
+
+  $scope.onFacebookTap = function(){
+    window.open('http://www.facebook.com', '_system', 'location=yes');  return false;
+  }
+
+  $scope.onTwitterTap = function(){
+    window.open('http://www.twitter.com', '_system', 'location=yes');  return false;
+  }
 
 })
 
