@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, $rootScope, Settings, AdUtil) {
+.run(function($ionicPlatform, $rootScope, Settings, AdUtil, ConnectivityMonitor) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,13 +21,10 @@ angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter
       StatusBar.styleDefault();
     }
 
-    function initDeveloperAd(){
-      $rootScope.platformSettings = Settings.getPlatformSettings();
-      AdUtil.showBannerAd( $rootScope.platformSettings.banner );
-    }
+    ConnectivityMonitor.startWatching();
 
-    document.addEventListener('deviceready', initDeveloperAd, false);
-
+    var platformBanner = Settings.getPlatformSettings();
+    AdUtil.showBannerAd( platformBanner.banner );
   });
 })
 
