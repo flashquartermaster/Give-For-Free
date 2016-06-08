@@ -51,28 +51,13 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, Settings, AdUtil) {
 
-  $scope.platformSettings = Settings.getPlatformSettings();
-
-  function showBannerAd() {
-    console.log('<GFF> HomeCtrl showBannerAd AdUnit: ', $scope.platformSettings.banner);
-    AdMob.removeBanner();
-    AdMob.createBanner( {
-        adId: $scope.platformSettings.banner,
-        //isTesting: true,
-        overlap: false,
-        offsetTopBar: false,
-        adSize:'SMART_BANNER',
-        position: AdMob.AD_POSITION.BOTTOM_CENTER,
-        overlap:false,
-        bgColor: 'black',
-        autoShow: true
-    } );
+  function showHomeAd() {
+    var platform = Settings.getPlatformSettings();
+    console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ', platform.developerBanner );
+    AdUtil.showBannerAd( platform.developerBanner );
   }
 
-  $scope.$on('$ionicView.enter', showBannerAd );
-
-  //Why does this not fucking work and breaks the layout of tab-home.html it works everywhere else?????
-  //$scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.developerSettings.banner ) );
+  $scope.$on('$ionicView.enter', showHomeAd );
 
   $scope.onEmailTap = function(){
     window.open('mailto:support@giveforfree.co.uk', '_system', 'location=yes');  return false;
@@ -85,20 +70,32 @@ angular.module('starter.controllers', [])
   $scope.onTwitterTap = function(){
     window.open('http://www.twitter.com', '_system', 'location=yes');  return false;
   }
-
 })
 
 .controller('GiveCtrl', function($scope, Charities) {
   $scope.charities = Charities.all();
 })
 
-.controller('GiveDetailCtrl', function($scope, $stateParams, Charities, AdUtil ){
+.controller('GiveDetailCtrl', function($scope, $stateParams, Charities, AdUtil, Settings ){
   $scope.charity = Charities.get($stateParams.charityId);
-  $scope.$on('$ionicView.enter', AdUtil.showBannerAd( $scope.charity.banner ) );
+
+  function showAd() {
+    if( Settings.isBannerAd() ){
+      console.log('<GFF> GiveDetailCtrl Banner AdUnit: ', $scope.charity.banner );
+      AdUtil.showBannerAd( $scope.charity.banner  );
+    } else {
+      console.log('<GFF> GiveDetailCtrl Interstitial AdUnit: ', $scope.charity.interstitial);
+      AdUtil.showInterstitialAd( $scope.charity.interstitial  );
+    }
+  }
+
+  $scope.$on('$ionicView.enter', showAd );
 })
 
 .controller('SettingsCtrl', function($scope, Settings, $state, $ionicHistory) {
-  $scope.adTypes = Settings.getAdTypes();
+    $scope.platformSettings = Settings.getPlatformSettings();
+    $scope.adTypes = Settings.getAdTypes();
+    $scope.locations = Settings.getLocations();
 
   $scope.onAdTypeCheckboxTap = function(){
     Settings.toggleAdType();
@@ -107,9 +104,12 @@ angular.module('starter.controllers', [])
     });
   }
 
-  $scope.locations = Settings.getLocations();
-
   $scope.onToggleLocationSetting = function( location ){
     console.log('<GFF> onToggleLocationSetting changed to ' + JSON.stringify(location));
+  }
+
+  $scope.resetDefaults = function(){
+    window.localStorage.clear();
+    Settings.setDefaultSettings();
   }
 });

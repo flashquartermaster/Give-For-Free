@@ -23,8 +23,10 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
 
     ConnectivityMonitor.startWatching();
 
-    var platformBanner = Settings.getPlatformSettings();
-    AdUtil.showBannerAd( platformBanner.banner );
+    Settings.setDefaultSettings();
+
+    AdUtil.showBannerAd( platform.developerBanner );//Only show banners on the home page
+
   });
 })
 
