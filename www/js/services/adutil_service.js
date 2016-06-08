@@ -15,6 +15,7 @@ services.factory('AdUtil', function(){
         bgColor: 'black',
         autoShow: true,
       });
+      ionic.trigger('gffOnAdRequest');
     },
 
     showInterstitialAd: function(interstitialId){
@@ -25,6 +26,7 @@ services.factory('AdUtil', function(){
         isTesting: true,//Global testing switch
         autoShow: true
       });
+      ionic.trigger('gffOnAdRequest');
     }
 
   }
