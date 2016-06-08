@@ -25,7 +25,8 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
 
     Settings.setDefaultSettings();
 
-    AdUtil.showBannerAd( platform.developerBanner );//Only show banners on the home page
+    //var platform = Settings.getPlatformSettings();
+    //AdUtil.showBannerAd( platform.developerBanner );//Keep this here for android show ads on startup
 
   });
 })
