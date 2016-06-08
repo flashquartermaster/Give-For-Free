@@ -2,8 +2,9 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
 
   function showHomeAd() {
     var platform = Settings.getPlatformSettings();
-    console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ', platform.developerBanner );
+    console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ' + platform.developerBanner );
     AdUtil.showBannerAd( platform.developerBanner );
+    //If ad is already developer ad dont show
   }
 
   $scope.$on('$ionicView.enter', showHomeAd );

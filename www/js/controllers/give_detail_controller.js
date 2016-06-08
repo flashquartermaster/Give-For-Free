@@ -3,11 +3,11 @@ controllers.controller('GiveDetailCtrl', function($scope, $stateParams, Charitie
 
   function showAd() {
     if( Settings.isBannerAd() ){
-      console.log('<GFF> GiveDetailCtrl Banner AdUnit: ', $scope.charity.banner );
-      AdUtil.showBannerAd( $scope.charity.banner  );
+      console.log('<GFF> GiveDetailCtrl Banner AdUnit: ' + Charities.getBannerAdvert($scope.charity.adverts) );
+      AdUtil.showBannerAd( Charities.getBannerAdvert($scope.charity.adverts) );
     } else {
-      console.log('<GFF> GiveDetailCtrl Interstitial AdUnit: ', $scope.charity.interstitial);
-      AdUtil.showInterstitialAd( $scope.charity.interstitial  );
+      console.log('<GFF> GiveDetailCtrl Interstitial AdUnit: ' + Charities.getFullScreenAdvert($scope.charity.adverts) );
+      AdUtil.showInterstitialAd( Charities.getFullScreenAdvert($scope.charity.adverts) );
     }
   }
 

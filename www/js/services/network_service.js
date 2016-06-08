@@ -20,24 +20,24 @@ services.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork){
         if(ionic.Platform.isWebView()){
 
           $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
-            console.log("<GFF> startWatching $cordovaNetwork:online went online");
+            console.log("<GFF> ConnectivityMonitor: startWatching $cordovaNetwork:online went online");
             ionic.trigger('gffNetworkChanged');
           });
 
           $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
-            console.log("<GFF> startWatching $cordovaNetwork:online went offline");
+            console.log("<GFF> ConnectivityMonitor: startWatching $cordovaNetwork:online went offline");
             ionic.trigger('gffNetworkChanged');
           });
 
         } else {
 
           window.addEventListener("online", function(e) {
-            console.log("<GFF> startWatching window.addEventListener went online");
+            console.log("<GFF> ConnectivityMonitor: startWatching window.addEventListener went online");
             ionic.trigger('gffNetworkChanged');
           }, false);
 
           window.addEventListener("offline", function(e) {
-            console.log("<GFF> startWatching window.addEventListener went offline");
+            console.log("<GFF> ConnectivityMonitor: startWatching window.addEventListener went offline");
             ionic.trigger('gffNetworkChanged');
           }, false);
         }
