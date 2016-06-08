@@ -1,7 +1,6 @@
 services.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork){
 
   return {
-    networkChangedEventName: 'gffNetworkChanged',
     isOnline: function(){
       if(ionic.Platform.isWebView()){
         return $cordovaNetwork.isOnline();

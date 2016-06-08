@@ -1,6 +1,6 @@
 controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionicPopup, ConnectivityMonitor) {
 
-  ionic.on(ConnectivityMonitor.networkChangedEventName, function(event){
+  ionic.on('gffNetworkChanged', function(event){
 
     var isOffline = ConnectivityMonitor.isOffline();
     if( isOffline ){
