@@ -26,7 +26,8 @@
       <ion-toggle toggle-class="toggle"
       ng-repeat="location in locations"
       ng-model=value
-      ng-change="onToggleLocationSetting( location )">{{location.name}}</ion-toggle>
+      ng-change="onToggleLocationSetting( location )"
+      ng-checked="location.isOn">{{location.name}}</ion-toggle>
 
     </ion-list>
 
