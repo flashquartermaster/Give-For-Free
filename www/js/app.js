@@ -25,8 +25,8 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
 
     Settings.setDefaultSettings();
 
-    //var platform = Settings.getPlatformSettings();
-    //AdUtil.showBannerAd( platform.developerBanner );//Keep this here for android show ads on startup
+    var platform = Settings.getPlatformSettings();
+    AdUtil.showBannerAd( platform.developerBanner );
 
   });
 })
