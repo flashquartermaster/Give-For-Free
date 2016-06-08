@@ -14,9 +14,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -34,9 +34,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -54,9 +54,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -74,9 +74,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -94,9 +94,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -114,9 +114,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -134,9 +134,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -154,9 +154,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -174,9 +174,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -194,9 +194,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -214,9 +214,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -234,9 +234,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -254,9 +254,9 @@ services.factory('Charities', function() {
     }, {
       id: 'android',
       banner: 'ca-app-pub-9425381356824619/2018459236',
-      interstitial: 'cca-app-pub-9425381356824619/5587910831'
+      interstitial: 'ca-app-pub-9425381356824619/5587910831'
     }, {
-      id: 'wp8',
+      id: 'windows',
       banner: 'ca-app-pub-9425381356824619/4897873639',
       interstitial: 'ca-app-pub-9425381356824619/7064644039'
     }]
@@ -273,13 +273,38 @@ services.factory('Charities', function() {
     },*/
 
     get: function(charityId) {
-      for (var i = 0; i < charities.length; i++) {
+      var arrayLength = charities.length;
+      for (var i = 0; i < arrayLength; i++) {
         if (charities[i].id === parseInt(charityId)) {
           return charities[i];
         }
       }
       return null;
+    },
+
+    getBannerAdvert: function( adverts ){
+      var advertsArrayLength = adverts.length
+
+      for (var i = 0; i < advertsArrayLength; i++) {
+        if ( ionic.Platform.platform() == adverts[i].id ){
+          return adverts[i].banner;
+        }
+      }
+
+      return null;
+    },
+
+    getFullScreenAdvert: function( adverts ){
+      var advertsArrayLength = adverts.length
+
+      for (var i = 0; i < advertsArrayLength; i++) {
+        if ( ionic.Platform.platform() == adverts[i].id ){
+          return adverts[i].interstitial;
+        }
+      }
+
+      return null;
     }
 
   };
-})
+});
