@@ -8,12 +8,20 @@
         <p>Full screen ads will generate more revenue for your chosen charity</p>
       </ion-item>
 
-      <ion-checkbox ng-repeat="adType in adTypes"
-                    ng-model="value"
-                    ng-checked="{{adType.isOn}}"
-                    ng-change="onAdTypeCheckboxTap();">
-                    {{ adType.name }}
+      <ion-checkbox ng-repeat="item in adTypes"
+                    ng-model="item.isOn"
+                    ng-checked="item.isOn"
+                    ng-change="onAdTypeChange( item );">
+                    {{ item.name }}
       </ion-checkbox>
+
+      <!--<ion-radio ng-repeat="item in adTypes"
+                 ng-value="item.isOn"
+                 ng-model="item.isOn"
+                 ng-checked="adType.isOn"
+                 ng-click="onAdTypeChange( item );">
+                 {{ item.name }}
+      </ion-radio>-->
 
     </ion-list>
 
@@ -23,11 +31,18 @@
         Use these locations
       </ion-item>
 
+      <!--<ion-checkbox ng-repeat="location in locations"
+                    ng-model="location.isOn"
+                    ng-checked="location.isOn">
+                    {{ location.name }}
+      </ion-checkbox>-->
+
       <ion-toggle toggle-class="toggle"
-      ng-repeat="location in locations"
-      ng-model=value
-      ng-change="onToggleLocationSetting( location )"
-      ng-checked="location.isOn">{{location.name}}</ion-toggle>
+                  ng-repeat="item in locations"
+                  ng-model="item.isOn"
+                  ng-checked="item.isOn">
+                  {{item.name}}
+      </ion-toggle>
 
     </ion-list>
 

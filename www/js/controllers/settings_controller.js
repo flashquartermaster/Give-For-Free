@@ -1,17 +1,16 @@
 controllers.controller('SettingsCtrl', function($scope, Settings, $state, $ionicHistory) {
-    $scope.platformSettings = Settings.getPlatformSettings();
-    $scope.adTypes = Settings.getAdTypes();
-    $scope.locations = Settings.getLocations();
+  $scope.platformSettings = Settings.getPlatformSettings();
+  $scope.adTypes = Settings.getAdTypes();
+  $scope.locations = Settings.getLocations();
 
-  $scope.onAdTypeCheckboxTap = function(){
-    Settings.toggleAdType();
-    $ionicHistory.clearCache([$state.current.name]).then(function() {
-      $state.reload();
-    });
-  }
-
-  $scope.onToggleLocationSetting = function( location ){
-    console.log('<GFF> onToggleLocationSetting changed to ' + JSON.stringify(location));
+  $scope.onAdTypeChange = function( adType ){
+    //Radio function for checkboxes
+    var arrayLength = $scope.adTypes.length;
+    for (var i = 0; i < arrayLength; i++) {
+      if( $scope.adTypes[i].id != adType.id ){
+        $scope.adTypes[i].isOn = false;
+      }
+    }
   }
 
   $scope.resetDefaults = function(){

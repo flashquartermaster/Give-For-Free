@@ -16,15 +16,6 @@ services.factory('Settings', function($localStorage){
       return $localStorage.adTypes;
     },
 
-    toggleAdType: function(){
-      var adTypes = $localStorage.adTypes;
-      var arrayLength = adTypes.length;
-      for (var i = 0; i < arrayLength; i++) {
-          adTypes[i].isOn = !adTypes[i].isOn;
-      }
-      $localStorage.adTypes = adTypes;
-    },
-
     isBannerAd: function(){
       var adTypes = $localStorage.adTypes;
       var arrayLength = adTypes.length;
