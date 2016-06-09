@@ -19,6 +19,6 @@ controllers.controller('TabCtrl', function($scope, $ionicHistory, $state, $ionic
     $scope.giveClick = false;
   }
 
-  $scope.$on('$ionicView.enter', navigateFromGiveDetail );
-  
+  $scope.$on('$ionicView.beforeEnter', navigateFromGiveDetail );
+
 });

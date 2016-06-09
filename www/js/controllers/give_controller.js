@@ -12,5 +12,5 @@ controllers.controller('GiveCtrl', function($scope, Charities, Settings) {
     $scope.charities = charitiesByLocation;
   }
 
-  $scope.$on('$ionicView.enter', updateView );
+  $scope.$on('$ionicView.beforeEnter', updateView );
 });
