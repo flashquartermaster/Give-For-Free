@@ -36,7 +36,6 @@ services.factory('Settings', function($localStorage){
       var ret = [];
       var len = locations.length;
       for (var i = 0; i < len; i++) {
-        console.log('<GFF> Settings getActiveLocations ' + JSON.stringify(locations[i]));
         if( locations[i].isOn ){
           ret.push( locations[i] );
         }

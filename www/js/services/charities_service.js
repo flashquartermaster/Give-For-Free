@@ -282,7 +282,6 @@ services.factory('Charities', function() {
     },
 
     getAllByLocation: function( locationId ){
-      console.log('<GFF> Charities getByLocation ' + locationId );
       var ret = [];
       var len = charities.length;
       for (var i = 0; i < len; i++) {
@@ -290,7 +289,6 @@ services.factory('Charities', function() {
           ret.push( charities[i] );
         }
       }
-      console.log('<GFF> Charities getByLocation ' + JSON.stringify(ret) );
       return ret;
     },
 
