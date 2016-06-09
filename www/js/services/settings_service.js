@@ -1,5 +1,5 @@
-services.factory('Settings', function($localStorage){
-  console.log('<GFF> Platform: ' + ionic.Platform.platform());
+services.factory('Settings', function($localStorage, $rootScope){
+  console.log('<GFF> Settings: Platform: ' + ionic.Platform.platform());
   return {
     getPlatformSettings: function() {
       if ( ionic.Platform.platform() == 'ios' ){
@@ -43,21 +43,30 @@ services.factory('Settings', function($localStorage){
       return ret;
     },
 
+    isShowingDeveloperAd: function(){
+      return $rootScope.isShowingDeveloperAd;
+    },
+
+    showingDeveloperAd: function( bool ){
+      //console.log('<GFF> Settings: showingDeveloperAd set to ' + bool);
+      $rootScope.isShowingDeveloperAd = bool;
+    },
+
     setDefaultSettings: function(){
 
       $localStorage.$default({
           platformSettings: [{
             id: 'ios',
-            developerBanner: 'ca-app-pub-9425381356824619/4451731633',
-            developerInterstitial: 'ca-app-pub-9425381356824619/8219770039'
+            developerBanner: 'ca-app-pub-9425381356824619/4451731633'
+            //developerInterstitial: 'ca-app-pub-9425381356824619/8219770039'
           }, {
             id: 'android',
-            developerBanner: 'ca-app-pub-9425381356824619/5928464836',
-            developerInterstitial: 'ca-app-pub-9425381356824619/3510368838'
+            developerBanner: 'ca-app-pub-9425381356824619/5928464836'
+            //developerInterstitial: 'ca-app-pub-9425381356824619/3510368838'
           }, {
             id: 'windows',
-            developerBanner: 'ca-app-pub-9425381356824619/7405198034',
-            developerInterstitial: 'ca-app-pub-9425381356824619/6463835232'
+            developerBanner: 'ca-app-pub-9425381356824619/7405198034'
+            //developerInterstitial: 'ca-app-pub-9425381356824619/6463835232'
           }],
 
           adTypes: [{
