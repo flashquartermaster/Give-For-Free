@@ -6,16 +6,19 @@ controllers.controller('TabCtrl', function($scope, $ionicHistory, $state, $ionic
     $scope.giveClick = true;
   }
 
-  $scope.$on('$ionicView.enter', function() {
-     var currentStateName = $ionicHistory.currentStateName();
+  function navigateFromGiveDetail(){
+    var currentStateName = $ionicHistory.currentStateName();
 
-     if( currentStateName == 'tab.give-detail' && $scope.giveClick){
-       $ionicHistory.nextViewOptions({
-          disableAnimate: true
-        });
-        $state.go('tab.give');
-     }
+    if( currentStateName == 'tab.give-detail' && $scope.giveClick){
+      $ionicHistory.nextViewOptions({
+         disableAnimate: true
+       });
+       $state.go('tab.give');
+    }
 
-     $scope.giveClick = false;
-  })
+    $scope.giveClick = false;
+  }
+
+  $scope.$on('$ionicView.enter', navigateFromGiveDetail );
+  
 });
