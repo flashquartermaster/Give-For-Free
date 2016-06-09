@@ -30,7 +30,7 @@ services.factory('Settings', function($localStorage){
       var arrayLength = adTypes.length;
       for (var i = 0; i < arrayLength; i++) {
           if( adTypes[i].isOn  ){
-            return adTypes[i].name == 'Banner';
+            return adTypes[i].id == 'banner';
           }
       }
       return false;
@@ -39,21 +39,19 @@ services.factory('Settings', function($localStorage){
     getLocations: function(){
       return $localStorage.locations;
     },
-    /*
-    setLocation: function(location,isOn){
+
+    getActiveLocations: function(){
       var locations = $localStorage.locations;
-      if( isOn ){
-        locations.push( location );
-      } else {
-        for( var item in locations ){
-          if( item == location ){
-            var index = locations.indexOf( item );
-            locations.splice( index, 1 );
-          }
+      var ret = [];
+      var len = locations.length;
+      for (var i = 0; i < len; i++) {
+        console.log('<GFF> Settings getActiveLocations ' + JSON.stringify(locations[i]));
+        if( locations[i].isOn ){
+          ret.push( locations[i] );
         }
       }
-      $localStorage.locations = locations;
-    }*/
+      return ret;
+    },
 
     setDefaultSettings: function(){
 
@@ -73,21 +71,21 @@ services.factory('Settings', function($localStorage){
           }],
 
           adTypes: [{
-            id: 0,
+            id: 'banner',
             name: 'Banner',
             isOn: true
           },{
-            id: 1,
+            id: 'interstitial',
             name: 'Full Screen',
             isOn: false
           }],
 
           locations: [{
-            id: 0,
+            id: 'world',
             name:'World',
             isOn: true
           },{
-            id: 1,
+            id: 'uk',
             name:'Uk',
             isOn: false
           }]

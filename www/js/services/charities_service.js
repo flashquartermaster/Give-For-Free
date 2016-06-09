@@ -7,6 +7,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -27,6 +28,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -47,6 +49,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -67,6 +70,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -87,6 +91,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -107,6 +112,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -127,6 +133,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'world',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -147,6 +154,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -167,6 +175,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -187,6 +196,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -207,6 +217,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -227,6 +238,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -247,6 +259,7 @@ services.factory('Charities', function() {
     thumbnail: 'img/breast_cancer.png',
     url: 'https://www.breastcancercare.org.uk/',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel gravida sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet efficitur nunc euismod lacinia.',
+    locationId: 'uk',
     adverts: [{
       id: 'ios',
       banner: 'ca-app-pub-9425381356824619/6786736033',
@@ -268,9 +281,18 @@ services.factory('Charities', function() {
       return charities;
     },
 
-    /*remove: function(chat) {
-      charities.splice(chats.indexOf(charities), 1);
-    },*/
+    getAllByLocation: function( locationId ){
+      console.log('<GFF> Charities getByLocation ' + locationId );
+      var ret = [];
+      var len = charities.length;
+      for (var i = 0; i < len; i++) {
+        if( charities[i].locationId == locationId ){
+          ret.push( charities[i] );
+        }
+      }
+      console.log('<GFF> Charities getByLocation ' + JSON.stringify(ret) );
+      return ret;
+    },
 
     get: function(charityId) {
       var arrayLength = charities.length;
@@ -304,6 +326,14 @@ services.factory('Charities', function() {
       }
 
       return null;
+    },
+
+    reorder: function(id,index){
+
+    },
+
+    disable: function(id){
+
     }
 
   };
