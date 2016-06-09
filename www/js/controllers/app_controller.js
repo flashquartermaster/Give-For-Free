@@ -56,10 +56,11 @@ controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionic
       */
   });
 
-  /*
   //Tiggered when interstitial is showing
-  document.addEventListener('onAdPresent',function(data){
-      console.log('<GFF> AppCrl onAdPresent ' + JSON.stringify( data ));
+  /*document.addEventListener('onAdPresent',function(data){
+  });
+
+  document.addEventListener('onAdDismiss', function(data){
   });*/
 
 });
