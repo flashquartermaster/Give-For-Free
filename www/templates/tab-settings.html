@@ -8,34 +8,87 @@
         <p>Full screen ads will generate more revenue for your chosen charity</p>
       </ion-item>
 
+      <ion-toggle toggle-class="toggle"
+                  ng-repeat="item in adTypes"
+                  ng-model="item.isOn"
+                  ng-checked="item.isOn"
+                  ng-change="onAdTypeChange( item );">
+                  {{item.name}}
+      </ion-toggle>
+
+      <!--
       <ion-checkbox ng-repeat="item in adTypes"
                     ng-model="item.isOn"
                     ng-checked="item.isOn"
                     ng-change="onAdTypeChange( item );">
                     {{ item.name }}
       </ion-checkbox>
+    -->
 
-      <!--<ion-radio ng-repeat="item in adTypes"
+<!--
+      <ion-radio ng-repeat="item in adTypes"
                  ng-value="item.isOn"
                  ng-model="item.isOn"
-                 ng-checked="adType.isOn"
+                 ng-checked="item.isOn"
                  ng-click="onAdTypeChange( item );">
                  {{ item.name }}
-      </ion-radio>-->
+      </ion-radio>
+    -->
+    <!--
+      <div ng-repeat="item in adTypes">
+        <label class="item item-radio">
+        <input type="radio"
+               name="adTypes"
+               ng-model="item.isOn"
+               ng-value="item.isOn"
+               ng-checked="item.isOn"
+               ng-click="onAdTypeChange( item );">
+            <div class="item-content">
+               {{ item.name }}
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+         </label>
+      </div>
+    -->
 
-    </ion-list>
+    <!--
+    <label class="item item-radio">
+    <input type="radio"
+           name="adTypes"
+           ng-model="adTypes[0].isOn"
+           ng-checked="adTypes[0].isOn"
+           ng-click="onAdTypeChange( adTypes[0] );">
+        <div class="item-content">
+           {{ adTypes[0].name }}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+     </label>
 
-    <ion-list>
+     <label class="item item-radio">
+     <input type="radio"
+            name="adTypes"
+            ng-model="adTypes[1].isOn"
+            ng-value="adTypes[1].isOn"
+            ng-checked="adTypes[1].isOn"
+            ng-click="onAdTypeChange( adTypes[1] );">
+         <div class="item-content">
+            {{ adTypes[1].name }}
+         </div>
+         <i class="radio-icon ion-checkmark"></i>
+      </label>
+    -->
 
       <ion-item class="item item-divider">
         Use these locations
       </ion-item>
 
-      <!--<ion-checkbox ng-repeat="location in locations"
-                    ng-model="location.isOn"
-                    ng-checked="location.isOn">
-                    {{ location.name }}
-      </ion-checkbox>-->
+      <!--
+      <ion-checkbox ng-repeat="item in locations"
+                    ng-model="item.isOn"
+                    ng-checked="item.isOn">
+                    {{ item.name }}
+      </ion-checkbox>
+-->
 
       <ion-toggle toggle-class="toggle"
                   ng-repeat="item in locations"
