@@ -8,7 +8,7 @@
         <p>Full screen ads will generate more revenue for your chosen charity</p>
       </ion-item>
 
-      <ion-toggle toggle-class="toggle"
+      <ion-toggle toggle-class="toggle-positive"
                   ng-repeat="item in adTypes"
                   ng-model="item.isOn"
                   ng-checked="item.isOn"
@@ -90,10 +90,11 @@
       </ion-checkbox>
 -->
 
-      <ion-toggle toggle-class="toggle"
+      <ion-toggle toggle-class="toggle-positive"
                   ng-repeat="item in locations"
                   ng-model="item.isOn"
-                  ng-checked="item.isOn">
+                  ng-checked="item.isOn"
+                  ng-change="onLocationChange( item.id );">
                   {{item.name}}
       </ion-toggle>
 
