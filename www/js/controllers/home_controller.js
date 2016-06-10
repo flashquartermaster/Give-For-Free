@@ -10,7 +10,9 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
 
   $scope.$on('$ionicView.enter', showHomeAd );
 
-  ionic.Platform.ready( showHomeAd );//Because view events do not appear to fire when the view first loads
+  //Because view events do not appear to fire when the view first loads
+  //Unfortuately adding this breaks the layout of the home page in a browser
+  ionic.Platform.ready( showHomeAd );
 
   $scope.onEmailTap = function(){
     window.open('mailto:support@giveforfreeonline.org', '_system', 'location=yes');  return false;
