@@ -17,10 +17,10 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
   }
 
   $scope.onFacebookTap = function(){
-    window.open('http://www.facebook.com', '_system', 'location=yes');  return false;
+    window.open('https://www.facebook.com/Give-For-Free-643061692510804/', '_system', 'location=yes');  return false;
   }
 
   $scope.onTwitterTap = function(){
-    window.open('http://www.twitter.com', '_system', 'location=yes');  return false;
+    window.open('https://twitter.com/_giveforfree_', '_system', 'location=yes');  return false;
   }
 });
