@@ -1,7 +1,40 @@
+/*Give Grid*/
 div.charity-grid-item {
   text-align: center;
 }
 
+div.charity-grid-item-disabled {
+  opacity: 0.3;
+}
+
+p.charity-grid-item-text {
+    word-wrap: break-word;
+}
+
 div.give-detail-center-heading{
   text-align: center;
+}
+
+button.give-edit-icon::before {
+    font-size: 20px !important;
+}
+
+/*Give Popover*/
+ion-popover-view.fit {
+  height: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative;
+}
+
+.platform-android ion-popover-view.fit {
+  margin-top: 10px;
+}
+
+.platform-ios ion-popover-view.fit .item:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.platform-ios ion-popover-view.fit .item:last-child {
+  border-radius: 0 0 10px 10px;
 }

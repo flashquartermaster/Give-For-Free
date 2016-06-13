@@ -1,0 +1,13 @@
+<ion-popover-view class="fit">
+  <ion-header-bar>
+    <h1 class="title">Edit Charity</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-toggle toggle-class="toggle-positive"
+                ng-model="popoverCharity.disabled"
+                ng-checked="popoverCharity.disabled"
+                ng-change="onPopOverDisableToggle( popoverCharity.id );">
+                Disable
+    </ion-toggle>
+  </ion-content>
+</ion-popover-view>

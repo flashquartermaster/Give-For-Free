@@ -1,14 +1,34 @@
 <ion-view view-title="Give">
+  <ion-nav-bar>
+    <ion-nav-buttons side="right">
+      <button class="button" ng-click="onEditToggle();">
+      {{isEditing ? 'Finished' : 'Edit'}}
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
   <ion-content class="padding">
+    <!--  | orderBy:'disabled'" -->
+    <div class="charity-grid-item"
+        collection-repeat="charity in charities | removeDisabledItems:isEditing"
+        item-height="160" item-width="33%">
 
-    <!-- Using Grid -->
-    <div class="charity-grid-item" collection-repeat="charity in charities"
-       item-height="130" item-width="33%">
-      <a href="#/tab/give/{{charity.id}}">
-        <img ng-src="{{charity.thumbnail}}">
-      </a>
-      <p>{{charity.name}}</p>
+       <div ng-if="isEditing">
+         <button class="button button-icon icon give-edit-icon ion-more" on-tap="onMoreTap($event, charity);"></button>
+         <button class="button button-icon icon give-edit-icon ion-drag" on-tap=""></button>
+         <div class="{{charity.disabled ? 'charity-grid-item-disabled' : ''}}">
+            <img ng-src="{{charity.thumbnail}}">
+            <p class="charity-grid-item-text">{{charity.name}}</p>
+        </div>
+       </div>
+
+       <div ng-if="!isEditing">
+         <a href="#/tab/give/{{charity.id}}">
+           <img ng-src="{{charity.thumbnail}}">
+         </a>
+         <p class="charity-grid-item-text">{{charity.name}}</p>
+       </div>
+       
     </div>
 
     <!-- Using List -->
