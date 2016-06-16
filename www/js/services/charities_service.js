@@ -51,25 +51,29 @@ services.factory('Charities', function($localStorage) {
       return null;
     },
 
-    reorder: function( charityId, toIndex ){
+    reorder: function( toMoveId, toMoveToId ){
       var charities = $localStorage.charities;
-      var len = charities.length, charityIndex, i;
+      var len = charities.length, i, toMoveIndex, toMoveToIndex;
       for (i = 0; i < len; i++) {
-        if( charities[i].id == charityId ){
-          charityIndex = i;
+        //console.log('<GFF> CharityService: reorder : ' + charities[i].name);
+        if( charities[i].id == toMoveId ){
+          toMoveIndex = i;
+          //console.log('<GFF> CharityService: reorder : move me: ' + charities[i].name + ', at: ' + toMoveIndex);
+        }
+        if( charities[i].id == toMoveToId ){
+          toMoveToIndex = i;
+          //console.log('<GFF> CharityService: reorder : move to: ' + charities[i].name + ', at: ' + toMoveToIndex);
+        }
+        if(!isNaN(toMoveIndex) && !isNaN(toMoveToIndex) ){//variables assigned so stop work
+          //console.log('<GFF> CharityService: reorder : variables assigned');
           break;
         }
       }
 
-      console.log('<GFF> CharityService: reorder : charityId ' + charityId + ', at index ' + charityIndex + ', to ' + toIndex);
-
-      console.log('<GFF> CharityService: reorder: chosen charity at ' + charityIndex+', '  + JSON.stringify(charities[charityIndex]) );
-
-      charities.move(charityIndex, toIndex);
-
-      console.log('<GFF> CharityService: reorder: now at ' + toIndex + ', ' + JSON.stringify(charities[toIndex]) );
-
-      //console.log('<GFF> CharityService: reorder: all '  + JSON.stringify(charities) );
+      //console.log('<GFF> CharityService: reorder : move ' + charities[toMoveIndex].name + ', at index ' + toMoveIndex + ', to ' + toMoveToIndex);
+      //console.log('<GFF> CharityService: reorder: chosen charity at ' + toMoveIndex + ', '  + JSON.stringify(charities[toMoveIndex]) );
+      charities.move(toMoveIndex, toMoveToIndex);
+      //console.log('<GFF> CharityService: reorder: now at ' + toMoveToIndex + ', ' + JSON.stringify(charities[toMoveToIndex]) );
     }
 
   };

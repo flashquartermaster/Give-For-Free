@@ -1,17 +1,13 @@
-controllers.controller('GiveCtrl', function($scope, $ionicPopover, Charities, Settings) {
+controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollDelegate, Charities, Settings, Scopes) {
+  Scopes.store('GiveCtrl', $scope);
 
-  $scope.isEditing = false;
+  $scope.isReordering = false;
+  $scope.isDisabledItems = false;
 
   function onBeforeEnter(){
-    var charitiesByLocation = [];
-    var activeLocations = Settings.getActiveLocations();
-
-    var len = activeLocations.length, i;
-    for (i = 0; i < len; i++) {
-      charitiesByLocation = charitiesByLocation.concat( Charities.getAllByLocation( activeLocations[i].id ) );
-    }
-
-    $scope.charities = charitiesByLocation;
+    $scope.activeLocations = Settings.getActiveLocations();
+    $scope.charities = Charities.all();
+    $ionicScrollDelegate.scrollTop();
   }
 
   $scope.$on('$ionicView.beforeEnter', onBeforeEnter );
@@ -30,29 +26,17 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, Charities, Se
     $scope.popover = popover;
   });
 
-  $scope.onMoreTap = function( $event, charity ){
-    $scope.popoverCharity = charity;
+  $scope.onMoreTap = function( $event ){
     $scope.popover.show($event);
   }
 
-  $scope.onEditToggle = function(){
-    $scope.isEditing = !$scope.isEditing;
+  $scope.onPopoverReorderToggle = function(){
+    $scope.isReordering = !$scope.isReordering;
   }
-})
-//Filter for collection-repeat for grid
-.filter('removeDisabledItems', function($parse) {
 
-    return function(input, isEditing) {
-        if (!input || !input.length) return;
-        if( !isEditing ){
-          var output = [];
-          for (var i = 0, ii = input.length; i < ii && (item = input[i]); i++) {
-              if( !item.disabled ){
-                output.push(item);
-              }
-          }
-          return output;
-        }
-        return input;
-    };
+  $scope.onPopoverDisableToggle = function(){
+    $scope.isDisabledItems = !$scope.isDisabledItems;
+    $ionicScrollDelegate.scrollTop();
+  }
+
 });

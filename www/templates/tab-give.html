@@ -1,54 +1,64 @@
 <ion-view view-title="Give">
   <ion-nav-bar>
     <ion-nav-buttons side="right">
-      <button class="button" ng-click="onEditToggle();">
-      {{isEditing ? 'Finished' : 'Edit'}}
-      </button>
+      <button class="button button-icon icon give-edit-icon ion-more" on-tap="onMoreTap($event);"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content class="padding">
+
+    <!-- Using List track by $index divider-ng-repeat | orderBy: '-locationId'-->
+    <!--<input type="text" ng-model="search"> | filter:search:item.name-->
+    <ion-list show-reorder="isReordering" can-swipe="true">
+
+      <ion-item ng-repeat="item in filteredCharities = (charities
+                          | locationFilter:activeLocations
+                          | disabledItemsFilter:isDisabledItems
+                          | manageDividersFilter ) track by item.id"
+                ng-controller="GiveListCtrl"
+                divider-ng-repeat
+                disabled-no-click-ng-repeat
+                class="item-thumbnail-left item-icon-right"
+                href="#/tab/give/{{item.id}}">
+
+            <img ng-src="{{item.thumbnail}}" class="{{item.disabled ? 'charity-grid-item-disabled' : ''}}">
+            <h2>{{item.name}}</h2>
+
+            <i class="icon ion-ios-arrow-left"></i>
+            <ion-option-button class="button-{{item.disabled ? 'energized' : 'assertive'}}" on-tap="onToggleDisabled(item);">
+              {{item.disabled ? 'Enable' : 'Disable'}}
+            </ion-option-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(filteredCharities, $fromIndex, $toIndex);">
+            </ion-reorder-button>
+
+        </ion-item>
+
+    </ion-list>
+
     <!--  | orderBy:'disabled'" -->
+    <!--
     <div class="charity-grid-item"
-        collection-repeat="charity in charities | removeDisabledItems:isEditing"
+        collection-repeat="item in charities | removeDisabledItems:isEditing"
         item-height="160" item-width="33%">
 
        <div ng-if="isEditing">
-         <button class="button button-icon icon give-edit-icon ion-more" on-tap="onMoreTap($event, charity);"></button>
+         <button class="button button-icon icon give-edit-icon ion-more" on-tap="onMoreTap($event, item);"></button>
          <button class="button button-icon icon give-edit-icon ion-drag" on-tap=""></button>
-         <div class="{{charity.disabled ? 'charity-grid-item-disabled' : ''}}">
-            <img ng-src="{{charity.thumbnail}}">
-            <p class="charity-grid-item-text">{{charity.name}}</p>
+         <div class="{{item.disabled ? 'charity-grid-item-disabled' : ''}}">
+            <img ng-src="{{item.thumbnail}}">
+            <p class="charity-grid-item-text">{{item.name}}</p>
         </div>
        </div>
 
        <div ng-if="!isEditing">
-         <a href="#/tab/give/{{charity.id}}">
-           <img ng-src="{{charity.thumbnail}}">
+         <a href="#/tab/give/{{item.id}}">
+           <img ng-src="{{item.thumbnail}}">
          </a>
-         <p class="charity-grid-item-text">{{charity.name}}</p>
+         <p class="charity-grid-item-text">{{item.name}}</p>
        </div>
-       
+
     </div>
-
-    <!-- Using List -->
-    <!--
-    <ion-list show-reorder="false" can-swipe="true">
-
-      <ion-item collection-repeat="charity in charities"
-                class="item-thumbnail-left item-icon-right"
-                href="#/tab/give/{{charity.id}}">
-
-        <img ng-src="img/breast_cancer_small.png">
-        <h2>{{charity.name}}</h2>
-
-        <i class="icon ion-ios-arrow-left"></i>
-        <ion-option-button class="button-assertive">Disable</ion-option-button>
-        <ion-reorder-button class="ion-drag"></ion-reorder-button>
-
-      </ion-item>
-
-    </ion-list>
   -->
+
   </ion-content>
 </ion-view>

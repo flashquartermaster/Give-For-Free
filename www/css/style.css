@@ -3,7 +3,7 @@ div.charity-grid-item {
   text-align: center;
 }
 
-div.charity-grid-item-disabled {
+img.charity-grid-item-disabled {
   opacity: 0.3;
 }
 
@@ -22,6 +22,7 @@ button.give-edit-icon::before {
 /*Give Popover*/
 ion-popover-view.fit {
   height: auto;
+  width: auto;
 }
 
 ion-popover-view.fit ion-content {
