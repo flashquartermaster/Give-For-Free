@@ -3,6 +3,7 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollD
 
   $scope.isReordering = false;
   $scope.isDisabledItems = false;
+  $scope.isSearch = false;
 
   function onBeforeEnter(){
     $scope.activeLocations = Settings.getActiveLocations();
@@ -36,6 +37,13 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollD
 
   $scope.onPopoverDisableToggle = function(){
     $scope.isDisabledItems = !$scope.isDisabledItems;
+    $ionicScrollDelegate.scrollTop();
+  }
+
+  $scope.onPopoverSearchToggle = function(){
+    angular.element( document.querySelector('#searchField') ).val('');
+    angular.element( document.querySelector('#searchField') ).triggerHandler('input')
+    $scope.isSearch = !$scope.isSearch;
     $ionicScrollDelegate.scrollTop();
   }
 

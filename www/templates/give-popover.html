@@ -15,5 +15,11 @@
                 ng-change="onPopoverDisableToggle();">
                 Show Disabled Items
     </ion-toggle>
+    <ion-toggle toggle-class="toggle-positive"
+                ng-model="isSearch"
+                ng-checked="isSearch"
+                ng-change="onPopoverSearchToggle();">
+                Enable Search
+    </ion-toggle>
   </ion-content>
 </ion-popover-view>

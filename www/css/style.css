@@ -1,14 +1,11 @@
-/*Give Grid*/
-div.charity-grid-item {
-  text-align: center;
-}
-
-img.charity-grid-item-disabled {
+/*Give List*/
+img.charity-list-item-disabled {
   opacity: 0.3;
 }
 
-p.charity-grid-item-text {
-    word-wrap: break-word;
+/*Give Search*/
+div.collapse {
+  display:none;
 }
 
 div.give-detail-center-heading{
