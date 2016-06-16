@@ -1,6 +1,25 @@
-controllers.controller('GiveDetailCtrl', function($scope, $stateParams, Charities, AdUtil, Settings ){
+controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, Charities, AdUtil, Settings ){
   $scope.charity = Charities.get($stateParams.charityId);
   $scope.thankyou = '';
+
+  var previousCharityId = Charities.getPreviousCharityId($stateParams.charityId);
+  var nextCharityId = Charities.getNextCharityId($stateParams.charityId);
+
+  $scope.onSwipeRight = function(){
+    if( !isNaN(previousCharityId) ){
+      $state.go('tab.give-detail', { charityId: previousCharityId });
+    }
+  }
+
+  $scope.onSwipeLeft = function(){
+    if( !isNaN(nextCharityId) ){
+      $state.go('tab.give-detail', { charityId: nextCharityId });
+    }
+  }
+
+  function onBeforeViewEnter(){
+    $scope.thankyou = '';
+  }
 
   function onViewEnter() {
     if( Settings.isBannerAd() ){
@@ -10,10 +29,6 @@ controllers.controller('GiveDetailCtrl', function($scope, $stateParams, Charitie
       console.log('<GFF> GiveDetailCtrl Interstitial AdUnit: ' + Charities.getFullScreenAdvert($scope.charity.adverts) );
       AdUtil.showInterstitialAd( Charities.getFullScreenAdvert($scope.charity.adverts) );
     }
-  }
-
-  function onBeforeViewEnter(){
-    $scope.thankyou = '';
   }
 
   $scope.$on('$ionicView.enter', onViewEnter );

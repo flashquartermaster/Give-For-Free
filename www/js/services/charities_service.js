@@ -6,16 +6,41 @@ services.factory('Charities', function($localStorage) {
       return $localStorage.charities;
     },
 
-    getAllByLocation: function( locationId ){
-      var ret = [];
+    getEnabledCharities: function(){
       var charities = $localStorage.charities;
-      var len = charities.length;
+      var len = charities.length, enabledCharities = [];
       for (var i = 0; i < len; i++) {
-        if( charities[i].locationId == locationId ){
-          ret.push( charities[i] );
+        if( !charities[i].disabled ) {
+          enabledCharities.push( charities[i] );
         }
       }
-      return ret;
+      return enabledCharities;
+    },
+
+    getPreviousCharityId: function( charityId ){
+      var charities = this.getEnabledCharities();
+      var len = charities.length;
+      for (var i = 0; i < len; i++) {
+        if (charities[i].id === parseInt(charityId)) {
+          if( charities[i-1] ){
+            return charities[i-1].id;
+          }
+        }
+      }
+      return charities[len-1].id;//go round in a circle
+    },
+
+    getNextCharityId: function( charityId ){
+      var charities = this.getEnabledCharities();
+      var len = charities.length;
+      for (var i = 0; i < len; i++) {
+        if (charities[i].id === parseInt(charityId)) {
+          if( charities[i+1] ){
+            return charities[i+1].id;
+          }
+        }
+      }
+      return charities[0].id;//go round in a circle
     },
 
     get: function( charityId ) {

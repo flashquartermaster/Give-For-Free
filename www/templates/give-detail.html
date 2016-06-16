@@ -1,25 +1,28 @@
 <ion-view title="{{charity.name}}">
   <ion-content class="padding">
+    <div id="swiper" on-swipe-right="onSwipeRight()" on-swipe-left="onSwipeLeft()">
 
-    <div class='give-detail-center-heading'>
-      <h1>{{thankyou}}</h1>
-    </div>
-
-    <div class="card">
-
-      <div class="item item-thumbnail-left item-text-wrap">
-          <img ng-src="{{charity.thumbnail}}">
-          <h2>{{charity.name}}</h2>
+      <div class='give-detail-center-heading'>
+        <h1>{{thankyou}}</h1>
       </div>
 
-      <div class="item item-text-wrap">
-        <p>{{charity.description}}</p>
-      </div>
+      <div class="card">
 
-      <div class="item item-divider">
-        Visit the website for <a href="{{charity.url}}"
-          onclick="window.open(this.href, ‘_system’, ‘location=yes’);  return false;">
-          {{charity.name}}</a>
+        <div class="item item-thumbnail-left item-text-wrap">
+            <img ng-src="{{charity.thumbnail}}">
+            <h2>{{charity.name}}</h2>
+        </div>
+
+        <div class="item item-text-wrap">
+          <p>{{charity.description}}</p>
+        </div>
+
+        <div class="item item-divider">
+          Visit the website for <a href="{{charity.url}}"
+            onclick="window.open(this.href, ‘_system’, ‘location=yes’);  return false;">
+            {{charity.name}}</a>
+        </div>
+
       </div>
 
     </div>
