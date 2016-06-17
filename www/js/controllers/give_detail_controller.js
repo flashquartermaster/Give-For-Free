@@ -2,23 +2,18 @@ controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, 
   $scope.charity = Charities.get($stateParams.charityId);
   $scope.thankyou = '';
 
-  var previousCharityId = Charities.getPreviousCharityId($stateParams.charityId);
-  var nextCharityId = Charities.getNextCharityId($stateParams.charityId);
-
   $scope.onSwipeRight = function(){
-    if( !isNaN(previousCharityId) ){
-      $state.go('tab.give-detail', { charityId: previousCharityId });
-    }
+      $state.go('tab.give-detail', { charityId: $scope.previousCharityId });
   }
 
   $scope.onSwipeLeft = function(){
-    if( !isNaN(nextCharityId) ){
-      $state.go('tab.give-detail', { charityId: nextCharityId });
-    }
+      $state.go('tab.give-detail', { charityId: $scope.nextCharityId });
   }
 
   function onBeforeViewEnter(){
     $scope.thankyou = '';
+    $scope.previousCharityId = Charities.getPreviousCharityId($stateParams.charityId);
+    $scope.nextCharityId = Charities.getNextCharityId($stateParams.charityId);
   }
 
   function onViewEnter() {

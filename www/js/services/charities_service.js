@@ -6,19 +6,38 @@ services.factory('Charities', function($localStorage) {
       return $localStorage.charities;
     },
 
-    getEnabledCharities: function(){
-      var charities = $localStorage.charities;
-      var len = charities.length, enabledCharities = [];
-      for (var i = 0; i < len; i++) {
-        if( !charities[i].disabled ) {
-          enabledCharities.push( charities[i] );
+    getEnabledCharitiesFromCurrentLocations: function(){
+      //get the active locations
+      var locations = $localStorage.locations;
+      var activeLocations = [];
+      var locationsLen = locations.length;
+      for (var i = 0; i < locationsLen; i++) {
+        if( locations[i].isOn ){
+          activeLocations.push( locations[i] );
         }
       }
-      return enabledCharities;
+
+      //Iterate over active locations to find charities
+      //that are in that locale and are not disabled
+      var charities = $localStorage.charities,
+      charitiesLen = charities.length,
+      enabledCharitiesByLocation = [],
+      activeLocationsLen = activeLocations.length;
+
+
+      for (var i = 0; i < activeLocationsLen; i++) {
+        for (var j = 0; j < charitiesLen; j++) {
+          if( charities[j].locationId == activeLocations[i].id && !charities[j].disabled ){
+            enabledCharitiesByLocation.push( charities[j] );
+          }
+        }
+      }
+
+      return enabledCharitiesByLocation;
     },
 
     getPreviousCharityId: function( charityId ){
-      var charities = this.getEnabledCharities();
+      var charities = this.getEnabledCharitiesFromCurrentLocations();
       var len = charities.length;
       for (var i = 0; i < len; i++) {
         if (charities[i].id === parseInt(charityId)) {
@@ -31,7 +50,7 @@ services.factory('Charities', function($localStorage) {
     },
 
     getNextCharityId: function( charityId ){
-      var charities = this.getEnabledCharities();
+      var charities = this.getEnabledCharitiesFromCurrentLocations();
       var len = charities.length;
       for (var i = 0; i < len; i++) {
         if (charities[i].id === parseInt(charityId)) {
@@ -80,25 +99,17 @@ services.factory('Charities', function($localStorage) {
       var charities = $localStorage.charities;
       var len = charities.length, i, toMoveIndex, toMoveToIndex;
       for (i = 0; i < len; i++) {
-        //console.log('<GFF> CharityService: reorder : ' + charities[i].name);
         if( charities[i].id == toMoveId ){
           toMoveIndex = i;
-          //console.log('<GFF> CharityService: reorder : move me: ' + charities[i].name + ', at: ' + toMoveIndex);
         }
         if( charities[i].id == toMoveToId ){
           toMoveToIndex = i;
-          //console.log('<GFF> CharityService: reorder : move to: ' + charities[i].name + ', at: ' + toMoveToIndex);
         }
         if(!isNaN(toMoveIndex) && !isNaN(toMoveToIndex) ){//variables assigned so stop work
-          //console.log('<GFF> CharityService: reorder : variables assigned');
           break;
         }
       }
-
-      //console.log('<GFF> CharityService: reorder : move ' + charities[toMoveIndex].name + ', at index ' + toMoveIndex + ', to ' + toMoveToIndex);
-      //console.log('<GFF> CharityService: reorder: chosen charity at ' + toMoveIndex + ', '  + JSON.stringify(charities[toMoveIndex]) );
       charities.move(toMoveIndex, toMoveToIndex);
-      //console.log('<GFF> CharityService: reorder: now at ' + toMoveToIndex + ', ' + JSON.stringify(charities[toMoveToIndex]) );
     }
 
   };
