@@ -1,19 +1,18 @@
-controllers.controller('TabCtrl', function($scope, $ionicHistory, $state, $ionicTabsDelegate, $ionicPopup, ConnectivityMonitor) {
+controllers.controller('TabCtrl', function($scope, $state, $ionicHistory, $ionicNavBarDelegate) {
 
   $scope.giveClick = false;
+  $ionicNavBarDelegate.showBackButton(false);
 
   $scope.giveTabSelected = function(){
     $scope.giveClick = true;
   }
 
   function navigateFromGiveDetail(){
-    var currentStateName = $ionicHistory.currentStateName();
-
-    if( currentStateName == 'tab.give-detail' && $scope.giveClick){
+    if( $state.is('tab.give-detail') && $scope.giveClick){
       $ionicHistory.nextViewOptions({
          disableAnimate: true
-       });
-       $state.go('tab.give');
+      });
+      $state.go('tab.give');
     }
 
     $scope.giveClick = false;

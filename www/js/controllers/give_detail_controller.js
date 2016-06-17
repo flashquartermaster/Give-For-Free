@@ -1,13 +1,15 @@
-controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, Charities, AdUtil, Settings ){
+controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, $ionicViewSwitcher, Charities, AdUtil, Settings ){
   $scope.charity = Charities.get($stateParams.charityId);
   $scope.thankyou = '';
 
   $scope.onSwipeRight = function(){
-      $state.go('tab.give-detail', { charityId: $scope.previousCharityId });
+    $ionicViewSwitcher.nextDirection('back');
+    $state.go('tab.give-detail', { charityId: $scope.previousCharityId });
   }
 
   $scope.onSwipeLeft = function(){
-      $state.go('tab.give-detail', { charityId: $scope.nextCharityId });
+    $ionicViewSwitcher.nextDirection('forward');
+    $state.go('tab.give-detail', { charityId: $scope.nextCharityId });
   }
 
   function onBeforeViewEnter(){
