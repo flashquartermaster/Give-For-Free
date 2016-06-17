@@ -3,6 +3,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.backButton.text('Back').icon('ion-chevron-left');
   $ionicConfigProvider.navBar.alignTitle("center");
   $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.views.swipeBackEnabled(false);
 
   $stateProvider
 
