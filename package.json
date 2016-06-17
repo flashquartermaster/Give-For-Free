@@ -25,7 +25,7 @@
     "cordova-plugin-network-information"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }
