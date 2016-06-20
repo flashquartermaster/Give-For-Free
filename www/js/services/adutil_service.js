@@ -20,7 +20,7 @@ services.factory('AdUtil', function( Settings ){
         AdMob.removeBanner();
         AdMob.createBanner({
           adId: adId,
-          isTesting: true,//Global testing switch
+          //isTesting: true,//Global testing switch
           overlap: false,
           offsetTopBar: false,
           adSize:'SMART_BANNER',
@@ -43,7 +43,7 @@ services.factory('AdUtil', function( Settings ){
       AdMob.removeBanner();//In case we have just switched from banner ads
       AdMob.prepareInterstitial({
         adId: adId,
-        isTesting: true,//Global testing switch
+        //isTesting: true,//Global testing switch
         autoShow: true
       });
       ionic.trigger('gffOnAdRequest');
