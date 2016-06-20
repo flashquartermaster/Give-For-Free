@@ -34,4 +34,10 @@ controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, 
   document.addEventListener('onAdLoaded', function(data){
     $scope.thankyou = 'Thank You';
   });
+
+  //Fix android swipe left and right not registering on this view
+  document.ontouchmove = function(event) {
+    event.preventDefault();
+  };
+
 });
