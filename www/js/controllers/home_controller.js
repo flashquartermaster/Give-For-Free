@@ -14,15 +14,8 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
   //Unfortuately adding this breaks the layout of the home page in a browser
   ionic.Platform.ready( showHomeAd );
 
-  $scope.onEmailTap = function(){
-    window.open('mailto:support@giveforfreeonline.org', '_system', 'location=yes');  return false;
-  }
-
-  $scope.onFacebookTap = function(){
-    window.open('https://www.facebook.com/Give-For-Free-643061692510804/', '_system', 'location=yes');  return false;
-  }
-
-  $scope.onTwitterTap = function(){
-    window.open('https://twitter.com/_giveforfree_', '_system', 'location=yes');  return false;
+  $scope.onOpenLink = function(element) {
+    window.open(elem.href, '_system', 'location=yes');
+    return false;
   }
 });
