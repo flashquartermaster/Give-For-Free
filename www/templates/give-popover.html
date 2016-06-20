@@ -1,23 +1,23 @@
-<ion-popover-view class="fit">
+<ion-popover-view class="fit" ng-controller="GivePopOverCtrl">
   <ion-header-bar>
     <h1 class="title">Edit Charity List</h1>
   </ion-header-bar>
   <ion-content>
     <ion-toggle toggle-class="toggle-positive"
-                ng-model="isReordering"
-                ng-checked="isReordering"
+                ng-model="data.isReordering"
+                ng-checked="data.isReordering"
                 ng-change="onPopoverReorderToggle();">
                 Set Swipe Order
     </ion-toggle>
     <ion-toggle toggle-class="toggle-positive"
-                ng-model="isDisabledItems"
-                ng-checked="isDisabledItems"
+                ng-model="data.isDisabledItems"
+                ng-checked="data.isDisabledItems"
                 ng-change="onPopoverDisableToggle();">
                 Show Disabled Items
     </ion-toggle>
     <ion-toggle toggle-class="toggle-positive"
-                ng-model="isSearch"
-                ng-checked="isSearch"
+                ng-model="data.isSearch"
+                ng-checked="data.isSearch"
                 ng-change="onPopoverSearchToggle();">
                 Enable Search
     </ion-toggle>

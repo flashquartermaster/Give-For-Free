@@ -1,6 +1,7 @@
 controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollDelegate, Charities, Settings, Scopes) {
   Scopes.store('GiveCtrl', $scope);
 
+  //These itrems are all manipulated from the popover
   $scope.isReordering = false;
   $scope.isDisabledItems = false;
   $scope.isSearch = false;
@@ -17,13 +18,8 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollD
     $scope.popover.remove();
   });
 
-  $scope.$on('popover.hidden', function() {
-    $scope.popoverCharity = null;
-  });
-
-  $ionicPopover.fromTemplateUrl('templates/give-popover.html', {
-    scope: $scope
-  }).then( function( popover ) {
+  $ionicPopover.fromTemplateUrl('templates/give-popover.html')
+  .then( function( popover ) {
     $scope.popover = popover;
   });
 
@@ -31,20 +27,18 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollD
     $scope.popover.show($event);
   }
 
-  $scope.onPopoverReorderToggle = function(){
-    $scope.isReordering = !$scope.isReordering;
-  }
+  $scope.$watch(function(scope) { return scope.isDisabledItems },
+                function(){
+                  $ionicScrollDelegate.scrollTop();
+                }
+  );
 
-  $scope.onPopoverDisableToggle = function(){
-    $scope.isDisabledItems = !$scope.isDisabledItems;
-    $ionicScrollDelegate.scrollTop();
-  }
-
-  $scope.onPopoverSearchToggle = function(){
-    angular.element( document.querySelector('#searchField') ).val('');
-    angular.element( document.querySelector('#searchField') ).triggerHandler('input')
-    $scope.isSearch = !$scope.isSearch;
-    $ionicScrollDelegate.scrollTop();
-  }
+  $scope.$watch(function(scope) { return scope.isSearch },
+                function(){
+                  angular.element( document.querySelector('#searchField') ).val('');
+                  angular.element( document.querySelector('#searchField') ).triggerHandler('input');
+                  $ionicScrollDelegate.scrollTop();
+                }
+  );
 
 });
