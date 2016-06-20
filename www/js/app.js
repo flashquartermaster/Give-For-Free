@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controllers', 'starter.services'])
+var app = angular.module('starter', ['ionic','ionic.service.core', 'ngStorage', 'ngCordova', 'starter.controllers', 'starter.services'])
 .run(function($ionicPlatform, $rootScope, Settings, AdUtil, ConnectivityMonitor) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
