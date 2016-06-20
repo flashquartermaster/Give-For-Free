@@ -7,8 +7,14 @@ controllers.controller('SettingsCtrl', function($scope, Settings, $state, $ionic
     //Radio function
     var len = $scope.adTypes.length, i;
     for (i = 0; i < len; i++) {
-      if( $scope.adTypes[i].id != adType.id ){
-        $scope.adTypes[i].isOn = false;
+      if( adType.isOn ){//Switch on so switch the other one off
+        if( $scope.adTypes[i].id != adType.id ){
+          $scope.adTypes[i].isOn = false;
+        }
+      } else {//Switch off so swicth the other one on
+        if( $scope.adTypes[i].id != adType.id ){
+          $scope.adTypes[i].isOn = true;
+        }
       }
     }
   }
