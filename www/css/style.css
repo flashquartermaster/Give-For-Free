@@ -36,3 +36,20 @@ ion-popover-view.fit ion-content {
 .platform-ios ion-popover-view.fit .item:last-child {
   border-radius: 0 0 10px 10px;
 }
+
+/*Give Detail Animation*/
+.ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.give-detail-animate-show.ng-hide-remove {
+  transition: height 0.5s linear, opacity 1s linear;
+  opacity: 1;
+  height: 224px;
+}
+
+.give-detail-animate-show.ng-hide {
+  height: 0px;
+  opacity: 0;
+}
