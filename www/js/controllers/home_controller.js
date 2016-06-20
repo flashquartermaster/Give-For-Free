@@ -15,7 +15,7 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
   ionic.Platform.ready( showHomeAd );
 
   $scope.onOpenLink = function(element) {
-    window.open(elem.href, '_system', 'location=yes');
+    window.open(element.href, '_system', 'location=yes');
     return false;
   }
 });
