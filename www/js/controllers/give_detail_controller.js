@@ -1,6 +1,5 @@
 controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, $ionicViewSwitcher, Charities, AdUtil, Settings ){
   $scope.charity = Charities.get($stateParams.charityId);
-  $scope.thankyou = '';
 
   $scope.onSwipeRight = function(){
     $ionicViewSwitcher.nextDirection('back');
@@ -13,7 +12,7 @@ controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, 
   }
 
   function onBeforeViewEnter(){
-    $scope.thankyou = '';
+    $scope.isThankYou = false;
     $scope.previousCharityId = Charities.getPreviousCharityId($stateParams.charityId);
     $scope.nextCharityId = Charities.getNextCharityId($stateParams.charityId);
   }
@@ -32,7 +31,7 @@ controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, 
   $scope.$on('$ionicView.beforeEnter', onBeforeViewEnter );
 
   document.addEventListener('onAdLoaded', function(data){
-    $scope.thankyou = 'Thank You';
+    $scope.isThankYou = true;
   });
 
   //Fix android swipe left and right not registering on this view

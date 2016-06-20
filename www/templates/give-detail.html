@@ -1,8 +1,33 @@
 <ion-view title="{{charity.name}}">
   <ion-content class="padding" on-swipe-right="onSwipeRight();" on-swipe-left="onSwipeLeft();">
 
-    <div class='give-detail-center-heading'>
-      <h1>{{thankyou}}</h1>
+    <div class="card give-detail-center-heading" ng-show="isThankYou">
+
+      <div class="row item">
+        <div class="col">
+          <h1>Thank You</h1>
+        </div>
+      </div>
+
+      <div class="row item item-text-wrap">
+        <div class="col">
+          <p>You can stay on this page and the adverts will refresh every 30 seconds generating revenue
+            for your chosen charity or swipe right to go to the next one or swipe left to to the previous one
+            in your list
+          </p>
+        </div>
+      </div>
+
+      <div class="row item item-divider">
+        <div class="col-33">
+          <a class="button icon-left ion-arrow-left-c button-clear button-dark" on-tap="onSwipeRight();">Swipe</a>
+        </div>
+        <div class="col-33"></div>
+        <div class="col-33">
+          <a class="button icon-right ion-arrow-right-c button-clear button-dark" on-tap="onSwipeLeft();">Swipe</a>
+        </div>
+      </div>
+
     </div>
 
     <div class="card">
