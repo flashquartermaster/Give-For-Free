@@ -366,6 +366,10 @@ services.factory('Settings', function($localStorage, $rootScope){
             }]
           }]
       });
+    },
+
+    getCurrentSettings: function(){
+      return $localStorage;
     }
   };
 });

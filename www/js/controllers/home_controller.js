@@ -1,6 +1,13 @@
 controllers.controller('HomeCtrl', function($scope, $state, Settings, AdUtil) {
 
+  $scope.firstname = '';
+
   function onViewEnter() {
+    var user = Ionic.User.current();
+    var firstname = user.details.name.split(" ")[0];
+
+    $scope.firstname = firstname;
+
     if(AdMob){//Because android need this on start up apparently
       var platform = Settings.getPlatformSettings();
       console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ' + platform.developerBanner );
