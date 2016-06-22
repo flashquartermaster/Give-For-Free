@@ -1,4 +1,4 @@
-services.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork){
+services.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork, EVENTS){
 
   return {
     isOnline: function(){
@@ -20,24 +20,24 @@ services.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork){
 
           $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
             console.log("<GFF> ConnectivityMonitor: startWatching $cordovaNetwork:online went online");
-            ionic.trigger('gffNetworkChanged');
+            ionic.trigger(EVENTS.networkChanged);
           });
 
           $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
             console.log("<GFF> ConnectivityMonitor: startWatching $cordovaNetwork:online went offline");
-            ionic.trigger('gffNetworkChanged');
+            ionic.trigger(EVENTS.networkChanged);
           });
 
         } else {
 
           window.addEventListener("online", function(e) {
             console.log("<GFF> ConnectivityMonitor: startWatching window.addEventListener went online");
-            ionic.trigger('gffNetworkChanged');
+            ionic.trigger(EVENTS.networkChanged);
           }, false);
 
           window.addEventListener("offline", function(e) {
             console.log("<GFF> ConnectivityMonitor: startWatching window.addEventListener went offline");
-            ionic.trigger('gffNetworkChanged');
+            ionic.trigger(EVENTS.networkChanged);
           }, false);
         }
     }

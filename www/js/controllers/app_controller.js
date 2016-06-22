@@ -1,6 +1,6 @@
-controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionicPopup, $ionicLoading, ConnectivityMonitor) {
+controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionicPopup, $ionicLoading, ConnectivityMonitor, EVENTS) {
 
-  ionic.on('gffNetworkChanged', function(event){
+  ionic.on(EVENTS.networkChanged, function(event){
 
     var isOffline = ConnectivityMonitor.isOffline();
     if( isOffline ){
@@ -24,7 +24,7 @@ controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionic
     }
   }, window);
 
-  ionic.on('gffOnAdRequest', function(){
+  ionic.on(EVENTS.adRequest, function(){
     $ionicLoading.show({
       template: '<p>Loading Advert...</p><ion-spinner icon=\'ripple\' class=\'spinner-light\'></ion-spinner>'
     });
