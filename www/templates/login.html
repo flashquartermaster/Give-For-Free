@@ -1,0 +1,115 @@
+<ion-view title="Login" hide-back-button="true" cache-view="false">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button ng-show="isForgotPassword || isSignUp" class="button icon-left ion-chevron-left button-clear button-dark" on-tap="showLogin();">Back</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+    <ion-content padding="true">
+
+      <div class="card">
+
+        <div class="item">
+
+          <form name="loginForm" class="list " ng-show="isLogin" novalidate>
+
+            <ion-list>
+
+              <label class="item item-input">
+                  <span class="input-label">Email</span>
+                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" required>
+              </label>
+
+              <label class="item item-input">
+                  <span class="input-label">Password</span>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-minlength="8" required>
+              </label>
+
+              <ion-toggle toggle-class="toggle-positive" ng-model="data.remember">Stay Logged In? {{data.remember ? 'On' : 'Off'}}</ion-toggle>
+
+              <p class="validation-error" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine">Please enter a valid email address</p>
+              <p class="validation-error" ng-show="loginForm.password.$error.minlength">Password must be at least 8 characters long</p>
+
+              <button class="button button-stable button-block" on-tap="doLogin(loginForm.$valid);" ng-disabled="loginForm.$invalid">Log in</button>
+              <button class="button button-positive button-block button-clear squash-button" on-tap="showCreateAccount();">Or create an account</button>
+              <button class="button button-positive button-block button-clear squash-button" on-tap="showForgotPassword();">Forgot your password?</button>
+
+            </ion-list>
+
+
+
+          </form>
+
+          <form name="signupForm" class="list" ng-show="isSignUp" novalidate>
+
+            <ion-list>
+
+              <label class="item item-input">
+                  <span class="input-label">First Name</span>
+                  <input type="text" placeholder="first name" ng-model="data.firstname" name="firstname" required>
+              </label>
+
+              <label class="item item-input">
+                  <span class="input-label">Last Name</span>
+                  <input type="text" placeholder="last name" ng-model="data.lastname" name="lastname" required>
+              </label>
+
+              <label class="item item-input">
+                  <span class="input-label">Email</span>
+                  <input type="email" placeholder="name@domain.com" name="email" ng-model="data.email" required>
+              </label>
+
+              <label class="item item-input">
+                  <span class="input-label">Password</span>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-minlength="8" required>
+              </label>
+
+              <p class="validation-error" ng-show="signupForm.email.$invalid && !signupForm.$pristine">Please enter a valid email address</p>
+              <p class="validation-error" ng-show="signupForm.firstname.$invalid && !signupForm.$pristine">Please enter a first name</p>
+              <p class="validation-error" ng-show="signupForm.lastname.$invalid && !signupForm.$pristine">Please enter a last name</p>
+              <p class="validation-error" ng-show="signupForm.password.$error.minlength">Password must be at least 8 characters long</p>
+
+              <button class="button button-stable button-block" on-tap="doSignUp();" ng-disabled="signupForm.$invalid">Sign up</button>
+
+            </ion-list>
+
+          </form>
+
+          <form name="forgotPasswordForm" class="list" ng-show="isForgotPassword" novalidate>
+
+            <ion-list>
+
+              <label class="item item-input">
+                  <span class="input-label">Email</span>
+                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" required>
+              </label>
+
+              <p class="validation-error" ng-show="forgotPasswordForm.email.$invalid && !forgotPasswordForm.email.$pristine">Please enter a valid email address</p>
+
+              <button class="button button-stable  button-block" on-tap="doRecoverPassword();" ng-disabled="forgotPasswordForm.$invalid">Recover Password</button>
+            </ion-list>
+            
+          </form>
+
+          <button ng-show="isForgotPassword || isSignUp"
+                  class="button button-stable  button-block icon-left ion-social-facebook"
+                  on-tap="doFacebookLogin();">
+                  Sign In with Facebook
+          </button>
+
+          <button ng-show="isForgotPassword || isSignUp"
+                  class="button button-stable  button-block icon-left ion-social-twitter"
+                  on-tap="doTwitterLogin();">
+                  Sign In with Twitter
+          </button>
+
+          <button ng-show="isForgotPassword || isSignUp"
+                  class="button button-stable  button-block icon-left ion-social-google"
+                  on-tap="doGoogleLogin();">
+                  Sign In with Google
+          </button>
+
+        </div>
+
+    </ion-content>
+</ion-view>

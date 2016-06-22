@@ -1,3 +1,11 @@
+/*Login*/
+p.validation-error{
+  color: red;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 /*Give List*/
 img.charity-list-item-disabled {
   opacity: 0.3;
@@ -8,12 +16,14 @@ div.collapse {
   display:none;
 }
 
-div.give-detail-center-heading{
-  text-align: center;
-}
-
 button.give-edit-icon::before {
     font-size: 20px !important;
+}
+
+.button.squash-button {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 1px;
 }
 
 /*Give Popover*/

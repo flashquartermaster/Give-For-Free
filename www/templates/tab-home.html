@@ -1,9 +1,9 @@
 <ion-view view-title="Give For Free">
-  <ion-content>
+  <ion-content class="has-header">
 
     <div class="card">
 
-      <div class="item item-divider">
+      <div class="item item-divider text-center">
         <h2>Welcome To Give For Free</h2>
       </div>
 
@@ -21,6 +21,7 @@
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-social-facebook" href="https://www.facebook.com/Give-For-Free-643061692510804/"></a>
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-social-twitter" href="https://twitter.com/_giveforfree_"></a>
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-email" href="mailto:support@giveforfreeonline.org"></a>
+        <button on-tap="doLogOut();"class="button button-dark  button-clear icon-left ion-log-out">Sign Out</button>
       </div>
 
     </div>

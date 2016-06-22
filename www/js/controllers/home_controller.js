@@ -1,6 +1,6 @@
-controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
+controllers.controller('HomeCtrl', function($scope, $state, Settings, AdUtil) {
 
-  function showHomeAd() {
+  function onViewEnter() {
     if(AdMob){//Because android need this on start up apparently
       var platform = Settings.getPlatformSettings();
       console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ' + platform.developerBanner );
@@ -8,14 +8,15 @@ controllers.controller('HomeCtrl', function($scope, Settings, AdUtil) {
     }
   }
 
-  $scope.$on('$ionicView.enter', showHomeAd );
-
-  //Because view events do not appear to fire when the view first loads
-  //Unfortuately adding this breaks the layout of the home page in a browser
-  ionic.Platform.ready( showHomeAd );
+  $scope.$on('$ionicView.enter', onViewEnter );
 
   $scope.onOpenLink = function(element) {
     window.open(element.href, '_system', 'location=yes');
     return false;
+  }
+
+  $scope.doLogOut = function(){
+    Ionic.Auth.logout();
+    $state.go('login');
   }
 });

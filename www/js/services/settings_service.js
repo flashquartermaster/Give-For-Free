@@ -1,5 +1,7 @@
 services.factory('Settings', function($localStorage, $rootScope){
+
   console.log('<GFF> Settings: Platform: ' + ionic.Platform.platform());
+
   return {
     getPlatformSettings: function() {
       if ( ionic.Platform.platform() == 'ios' ){
