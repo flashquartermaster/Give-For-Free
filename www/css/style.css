@@ -1,9 +1,17 @@
 /*Login*/
-p.validation-error{
+p.error-message{
   color: red;
   text-align: center;
   white-space: normal;
   word-wrap: break-word;
+  margin-top: 10px;
+}
+
+p.message {
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  margin-top: 10px;
 }
 
 /*Give List*/

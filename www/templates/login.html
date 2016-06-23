@@ -9,6 +9,8 @@
 
       <div class="card">
 
+        <div class="item item-divider item-text-wrap text-center" ng-show="isCurrentUser">Hi {{firstname}} welcome back please log in</div>
+
         <div class="item">
 
           <form name="loginForm" class="list " ng-show="isLogin" novalidate>
@@ -17,22 +19,24 @@
 
               <label class="item item-input">
                   <span class="input-label">Email</span>
-                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" required>
+                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" ng-focus="clearErrorMessage();" required>
               </label>
 
               <label class="item item-input">
                   <span class="input-label">Password</span>
-                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-minlength="8" required>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-focus="clearErrorMessage();" required>
               </label>
 
               <ion-toggle toggle-class="toggle-positive" ng-model="data.remember">Stay Logged In? {{data.remember ? 'On' : 'Off'}}</ion-toggle>
 
-              <p class="validation-error" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine">Please enter a valid email address</p>
-              <p class="validation-error" ng-show="loginForm.password.$error.minlength">Password must be at least 8 characters long</p>
+              <p class="error-message" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine">Please enter a valid email address</p>
+              <div ng-bind-html="message"></div>
 
-              <button class="button button-stable button-block" on-tap="doLogin(loginForm.$valid);" ng-disabled="loginForm.$invalid">Log in</button>
+              <button class="button button-stable button-block" on-tap="doLogin();" ng-disabled="loginForm.$invalid">Log in</button>
               <button class="button button-positive button-block button-clear squash-button" on-tap="showCreateAccount();">Or create an account</button>
-              <button class="button button-positive button-block button-clear squash-button" on-tap="showForgotPassword();">Forgot your password?</button>
+              <button class="button button-positive button-block button-clear squash-button"
+                      on-tap="showForgotPassword();"
+                      ng-show="forgotPassword">Forgot your password?</button>
 
             </ion-list>
 
@@ -46,30 +50,31 @@
 
               <label class="item item-input">
                   <span class="input-label">First Name</span>
-                  <input type="text" placeholder="first name" ng-model="data.firstname" name="firstname" required>
+                  <input type="text" placeholder="first name" ng-model="data.firstname" name="firstname" ng-focus="clearErrorMessage();" required>
               </label>
 
               <label class="item item-input">
                   <span class="input-label">Last Name</span>
-                  <input type="text" placeholder="last name" ng-model="data.lastname" name="lastname" required>
+                  <input type="text" placeholder="last name" ng-model="data.lastname" name="lastname" ng-focus="clearErrorMessage();" required>
               </label>
 
               <label class="item item-input">
                   <span class="input-label">Email</span>
-                  <input type="email" placeholder="name@domain.com" name="email" ng-model="data.email" required>
+                  <input type="email" placeholder="name@domain.com" name="email" ng-model="data.email" ng-focus="clearErrorMessage();" required>
               </label>
 
               <label class="item item-input">
                   <span class="input-label">Password</span>
-                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-minlength="8" required>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-focus="clearErrorMessage();" ng-minlength="5" required>
               </label>
 
-              <p class="validation-error" ng-show="signupForm.email.$invalid && !signupForm.$pristine">Please enter a valid email address</p>
-              <p class="validation-error" ng-show="signupForm.firstname.$invalid && !signupForm.$pristine">Please enter a first name</p>
-              <p class="validation-error" ng-show="signupForm.lastname.$invalid && !signupForm.$pristine">Please enter a last name</p>
-              <p class="validation-error" ng-show="signupForm.password.$error.minlength">Password must be at least 8 characters long</p>
+              <p class="error-message" ng-show="signupForm.email.$invalid && !signupForm.$pristine">Please enter a valid email address</p>
+              <p class="error-message" ng-show="signupForm.firstname.$invalid && !signupForm.$pristine">Please enter a first name</p>
+              <p class="error-message" ng-show="signupForm.lastname.$invalid && !signupForm.$pristine">Please enter a last name</p>
+              <p class="error-message" ng-show="signupForm.password.$error.minlength">Password must be at least 5 characters long</p>
+              <div ng-bind-html="message"></div>
 
-              <button class="button button-stable button-block" on-tap="doSignUp();" ng-disabled="signupForm.$invalid">Sign up</button>
+              <button class="button button-stable button-block" on-tap="doSignUp();" ng-disabled="signupForm.$invalid">Sign up and log me in</button>
 
             </ion-list>
 
@@ -81,14 +86,15 @@
 
               <label class="item item-input">
                   <span class="input-label">Email</span>
-                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" required>
+                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" ng-focus="clearErrorMessage();" required>
               </label>
 
-              <p class="validation-error" ng-show="forgotPasswordForm.email.$invalid && !forgotPasswordForm.email.$pristine">Please enter a valid email address</p>
+              <p class="error-message" ng-show="forgotPasswordForm.email.$invalid && !forgotPasswordForm.email.$pristine">Please enter a valid email address</p>
+              <div ng-bind-html="message"></div>
 
-              <button class="button button-stable  button-block" on-tap="doRecoverPassword();" ng-disabled="forgotPasswordForm.$invalid">Recover Password</button>
+              <button class="button button-stable  button-block" on-tap="doRecoverPassword();" ng-disabled="forgotPasswordForm.$invalid">Reset my password</button>
             </ion-list>
-            
+
           </form>
 
           <button ng-show="isForgotPassword || isSignUp"

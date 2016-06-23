@@ -4,9 +4,7 @@ controllers.controller('HomeCtrl', function($scope, $state, Settings, AdUtil) {
 
   function onViewEnter() {
     var user = Ionic.User.current();
-    var firstname = user.details.name.split(" ")[0];
-
-    $scope.firstname = firstname;
+    $scope.firstname = user.details.name.split(" ")[0];
 
     if(AdMob){//Because android need this on start up apparently
       var platform = Settings.getPlatformSettings();
