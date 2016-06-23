@@ -1,4 +1,4 @@
-controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicPopup, Settings) {
+controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, Settings, EVENTS) {
   $scope.data = {};
   $scope.isLogin = true;
   $scope.isSignUp = false;
@@ -86,6 +86,7 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
   function loginSuccess( user ){
     console.log('<GFF> LoginCtrl: loginSuccess');
+    $ionicLoading.hide();
     $state.go('tab.home');
   }
 
@@ -111,6 +112,8 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
                 "message":"No user could be found with the details provided"
               }}},"error":{}}
     */
+    $ionicLoading.hide();
+
     var errorsArray = errors.response.body.error.details, i, len = errorsArray ? errorsArray.length : 0,
                       errorMessage = '<p class="error-message">' + errors.response.body.error.message + '</p>';
 
@@ -131,19 +134,23 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
   $scope.doLogin = function(){
     console.log('<GFF> LoginCtrl : doLogin: ' + JSON.stringify($scope.data));
+    ionic.trigger(EVENTS.asynchronousUserEvents);
     Ionic.Auth.login('basic', loginSettings(), loginDetails() ).then(loginSuccess, loginFailure);
   }
 
   $scope.doFacebookLogin = function(){
     console.log('<GFF> LoginCtrl : doFacebookLogin: ' + JSON.stringify($scope.data));
+    //ionic.trigger(EVENTS.asynchronousUserEvents);
   }
 
   $scope.doTwitterLogin = function(){
     console.log('<GFF> LoginCtrl : doTwitterLogin: ' + JSON.stringify($scope.data));
+    //ionic.trigger(EVENTS.asynchronousUserEvents);
   }
 
   $scope.doGoogleLogin = function(){
     console.log('<GFF> LoginCtrl : doGoogleLogin: ' + JSON.stringify($scope.data));
+    //ionic.trigger(EVENTS.asynchronousUserEvents);
   }
 
   //Sign Up functions
@@ -160,10 +167,12 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   }
 
   function signupSuccess( newUser ){
+    //Keep the loading icon going
     Ionic.Auth.login('basic', {remember: true}, loginDetails() ).then(loginSuccess, loginFailure);
   }
 
   function signupFailure( errors ){
+    $ionicLoading.hide();
 
     var i, arr = errors.errors, len = arr.length, errorMessage = '';
 
@@ -196,22 +205,32 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
   $scope.doSignUp = function(){
     console.log('<GFF> LoginCtrl : doSignUp: ' + JSON.stringify($scope.data));
+    ionic.trigger(EVENTS.asynchronousUserEvents);
     Ionic.Auth.signup( signUpData() ).then(signupSuccess, signupFailure);
   }
 
   //Recover Password
   function recoverPasswordSuccess( response ){
+    $ionicLoading.hide();
     var message = '<p class="message">An email has been sent to ' + Ionic.User.current().details.email + ' with a new password</p>';
     setMessage(message);
   }
 
   function recoverPasswordFailure( error ){
+    $ionicLoading.hide();
     var errorMessage = '<p class="error-message">There was a problem emailing you a new password please try again</p>';
     setMessage(errorMessage);
   }
 
   $scope.doRecoverPassword = function(){
     console.log('<GFF> LoginCtrl : doRecoverPassword: ' + JSON.stringify($scope.data));
+    ionic.trigger(EVENTS.asynchronousUserEvents);
     Ionic.User.current().resetPassword().then(recoverPasswordSuccess, recoverPasswordFailure);
   }
+
+  ionic.on(EVENTS.asynchronousUserEvents, function(){
+    $ionicLoading.show({
+      template: '<ion-spinner icon=\'ripple\' class=\'spinner-light\'></ion-spinner>'
+    });
+  });
 })
