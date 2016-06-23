@@ -30,7 +30,7 @@ services.factory('AdUtil', function( Settings ){
           autoShow: true,
         });
 
-        ionic.trigger('gffOnAdRequest');
+        ionic.trigger(EVENTS.adRequest);
       }
 
 
@@ -46,7 +46,7 @@ services.factory('AdUtil', function( Settings ){
         //isTesting: true,//Global testing switch
         autoShow: true
       });
-      ionic.trigger('gffOnAdRequest');
+      ionic.trigger(EVENTS.adRequest);
     }
 
   }
