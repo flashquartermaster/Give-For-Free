@@ -1,5 +1,5 @@
 app.constant('EVENTS', {
-  networkChanged: 'gffNetworkChanged',
-  adRequest: 'gffOnAdRequest',
-  asynchronousUserEvents: 'gffAsynchronousUserEvents'
+  networkChanged: 'gff:networkChanged',
+  adRequest: 'gff:adRequest',
+  asynchronousUserEvents: 'gff:asynchronousUserEvents'
 })
