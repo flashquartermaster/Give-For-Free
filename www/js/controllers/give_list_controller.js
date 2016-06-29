@@ -1,4 +1,24 @@
 controllers.controller('GiveListCtrl', function($scope, $ionicPopup, $ionicListDelegate, Charities, Scopes) {
+  function userSaveSuccess( saveSuccess ) {
+    console.log('<GFF> GiveListCtrl: userSaveSuccess: success: ' + JSON.stringify( saveSuccess.response.body.data.custom.charities ) );
+  };
+
+  function userSaveFailure( saveError ) {
+    console.log('<GFF> GiveListCtrl: userSaveFailure: error: ' + JSON.stringify( saveError ) );
+    console.log('<GFF> GiveListCtrl: userSaveFailure: charities: ' + JSON.stringify(Ionic.User.current().get('settings')) );
+    console.log('<GFF> GiveListCtrl: userSaveFailure: charities: ' + JSON.stringify(Ionic.User.current().get('charities')) );
+
+    var alertPopup = $ionicPopup.alert({
+       title: 'Save Changes Error',
+       template: '<p class="text-center">There was a problem saving your changes: ' + saveError.response.body.error.message + '</p>'
+    });
+  };
+
+  function saveCharitiesData(){
+    var user = Ionic.User.current();
+    Charities.prepareForSave();
+    user.save().then( userSaveSuccess, userSaveFailure );
+  }
 
   $scope.onToggleDisabled = function(item){
     /*console.log('<GFF> GiveListCtrl: onToggleDisabled: filteredCharities.length: '
@@ -27,6 +47,8 @@ controllers.controller('GiveListCtrl', function($scope, $ionicPopup, $ionicListD
     } else {
       item.disabled = !item.disabled;
     }
+
+    saveCharitiesData();
   }
 
   $scope.reorderItem = function(filteredCharities, fromIndex, toIndex) {
@@ -35,6 +57,8 @@ controllers.controller('GiveListCtrl', function($scope, $ionicPopup, $ionicListD
     //console.log('<GFF> GiveListCtrl: reorderItem: itemToMove: ' + itemToMove.name + ', from: ' + fromIndex);
     //console.log('<GFF> GiveListCtrl: reorderItem: itemToReplace: ' + itemToReplace.name + ', to: ' + toIndex);
     Charities.reorder( itemToMove.id, itemToReplace.id );
+
+    saveCharitiesData();
   };
 
 })

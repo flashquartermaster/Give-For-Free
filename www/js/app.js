@@ -21,6 +21,5 @@ var app = angular.module('starter', ['ionic','ionic.service.core', 'ngStorage', 
     }
 
     ConnectivityMonitor.startWatching();
-    Settings.setDefaultSettings();
   });
 })

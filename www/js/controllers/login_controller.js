@@ -1,4 +1,4 @@
-controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, $openFB, Settings, EVENTS) {
+controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, $openFB, Settings, Charities, EVENTS) {
   $scope.data = {};
   $scope.isLogin = true;
   $scope.isSignUp = false;
@@ -85,7 +85,8 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   }
 
   function loginSuccess( user ){
-    console.log('<GFF> LoginCtrl: loginSuccess: ' + JSON.stringify( user ) );
+    //console.log('<GFF> LoginCtrl: loginSuccess: login user: ' + JSON.stringify( user.get('settings') ) );
+    //console.log('<GFF> LoginCtrl: loginSuccess: localstorage user: ' + JSON.stringify( Ionic.User.current().get('settings') ) );
     $ionicLoading.hide();
     $state.go('tab.home');
   }
@@ -165,7 +166,11 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
         if( user.get('settings') == undefined ){
           //New user will have no settings in custom data
-          user.set('settings', Settings.getCurrentSettings() );
+          user.set('settings', Settings.getInitialSettings() );
+        }
+
+        if( user.get('charities') == undefined ){
+          user.set('charities', Charities.getInitialCharities() );
         }
 
         function userSaveSuccess( saveSuccess ) {
@@ -175,21 +180,18 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
         function userSaveFailure( saveError ) {
           console.log('<GFF> LoginCtrl: facebookLoginSuccess: userSaveFailure: error: ' + JSON.stringify( saveError ) );
-          //This is untested its just info from the web. I could not manage to create a save error
-          //It just fails silently if I tery to do things like save a complex angular object like $scope
-
-          //"meta": {
-          //	"version": "2.0.0-beta.0",
-          //	"status": 401,
-          //	"request_id": "55d2e1fb-b88b-4b31-bac2-c8a420217962"
-          //},
-          //"error": {
-          //	"type": "Unauthorized",
-          //	"message": "Authorization header is missing.",
-          //	"link": null
-          //}
-
-          var errorMessage = formatErrorMessage( saveError.error.message );
+          //{"response":{
+          //  "seq_id":3,
+          //  "id":"3: PATCH https://api.ionic.io/auth/users/cbda85d3-5c74-4ff0-9516-10df9ec3821c",
+          //  "_id":"3: PATCH https://api.ionic.io/auth/users/cbda85d3-5c74-4ff0-9516-10df9ec3821c",
+          //  "timeoutTimer":179,
+          //  "statusCode":400,
+          //  "body":{
+          //    "error":{
+          //      "link":null,
+          //      "message":"Illegal operator '$$hashKey'","type":"BadRequest"
+          //    },"meta":{"status":400,"request_id":"67ec65e7-3e0f-4e6e-8aac-4c781bb55f82","version":"2.0.0-beta.0"}}},"error":{}}
+          var errorMessage = formatErrorMessage( saveError.response.body.error.message );
           setMessage(errorMessage);
         };
 
@@ -275,7 +277,8 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
       username: $scope.data.email,
       name: $scope.data.firstname + ' ' + $scope.data.lastname,
       custom: {
-        settings: Settings.getCurrentSettings()
+        settings: Settings.getInitialSettings(),
+        charities: Charities.getInitialCharities()
       }
     };
   }
