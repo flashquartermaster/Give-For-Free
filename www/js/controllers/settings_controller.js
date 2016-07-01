@@ -1,9 +1,10 @@
-controllers.controller('SettingsCtrl', function($scope, Settings, Charities, $state, $ionicHistory, $ionicPopup) {
+controllers.controller('SettingsCtrl', function($scope, $state, $ionicHistory, $ionicPopup, Settings, Charities, User) {
 
-  function onBeforeEnter(){
+  function onBeforeEnter(event, data){
     $scope.platformSettings = Settings.getPlatformSettings();
     $scope.adTypes = Settings.getAdTypes();
     $scope.locations = Settings.getLocations();
+    $scope.isSocialUser = User.isSocialUser();
   }
 
   $scope.$on('$ionicView.beforeEnter', onBeforeEnter );
@@ -82,6 +83,10 @@ controllers.controller('SettingsCtrl', function($scope, Settings, Charities, $st
     } else {
       saveLocationChanges();
     }
+  }
+
+  $scope.changePassword = function(){
+    $state.go('tab.change-password');
   }
 
   $scope.clearAllData = function(){

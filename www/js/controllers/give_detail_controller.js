@@ -11,13 +11,13 @@ controllers.controller('GiveDetailCtrl', function($scope, $state, $stateParams, 
     $state.go('tab.give-detail', { charityId: $scope.nextCharityId });
   }
 
-  function onBeforeViewEnter(){
+  function onBeforeViewEnter(event, data){
     $scope.isThankYou = false;
     $scope.previousCharityId = Charities.getPreviousCharityId($stateParams.charityId);
     $scope.nextCharityId = Charities.getNextCharityId($stateParams.charityId);
   }
 
-  function onViewEnter() {
+  function onViewEnter(event, data) {
     if( Settings.isBannerAd() ){
       console.log('<GFF> GiveDetailCtrl Banner AdUnit: ' + Charities.getBannerAdvert($scope.charity.adverts) );
       AdUtil.showBannerAd( Charities.getBannerAdvert($scope.charity.adverts) );

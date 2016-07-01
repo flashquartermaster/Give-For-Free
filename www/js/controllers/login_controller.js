@@ -1,4 +1,6 @@
-controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, $cordovaOauth, $cordovaOauthUtility, $http, Settings, Charities, EVENTS) {
+controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading,
+                                              $cordovaOauth, $cordovaOauthUtility, $http,
+                                              $rootScope, Settings, Charities, EVENTS) {
   $scope.data = {};
   $scope.isLogin = true;
   $scope.isSignUp = false;
@@ -8,7 +10,7 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   $scope.firstname = '';
   $scope.forgotPassword = false;
 
-  function onBeforeEnter(){
+  function onBeforeEnter(event, data){
     //check if we are logged in and navigate accordingly
     //console.log('<GFF> LoginCtrl: User: ' + JSON.stringify(Ionic.User.current()) );
     console.log('<GFF> LoginCtrl: User is Logged In: ' + Ionic.User.current().isAuthenticated());
@@ -94,6 +96,7 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   function ionicLoginFailure( errors ){
     console.log('<GFF> LoginCtrl: ionicLoginFailure: ' + JSON.stringify(errors) );
     /*
+    //Multiple errors response
     {"response":{
       "seq_id":1,"id":"1: POST https://api.ionic.io/auth/login","_id":"1: POST https://api.ionic.io/auth/login","timeoutTimer":128,"statusCode":422,
       "body":{
@@ -105,6 +108,7 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
     */
 
     /*
+    //1 error response
     {"response":{
       "seq_id":2,"id":"2: POST https://api.ionic.io/auth/login","_id":"2: POST https://api.ionic.io/auth/login","timeoutTimer":161,"statusCode":401,
       "body":{"meta":{"status":401,"version":"2.0.0-beta.0","request_id":"87ec6e93-e614-401c-9ff5-17e67b09325d"},
@@ -134,10 +138,6 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   function setMessage(message){
     $scope.message = message;
     $scope.$apply();//Because variable change is not updating the view
-  }
-
-  function formatErrorMessage( message ){
-    return '<p class="error-message">' + message + '</p>'
   }
 
   $scope.doLogin = function(){
@@ -514,8 +514,9 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
   //Recover Password
   function recoverPasswordSuccess( response ){
     $ionicLoading.hide();
-    var message = '<p class="message">An email has been sent to ' + Ionic.User.current().details.email + ' with a new password</p>';
+    var message = formatMessage('An email has been sent to ' + Ionic.User.current().details.email + ' with a new password');
     setMessage(message);
+    $rootScope.hasRequestedNewPassword = true;
   }
 
   function recoverPasswordFailure( error ){
@@ -529,10 +530,4 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
     ionic.trigger(EVENTS.asynchronousUserEvents);
     Ionic.User.current().resetPassword().then(recoverPasswordSuccess, recoverPasswordFailure);
   }
-
-  ionic.on(EVENTS.asynchronousUserEvents, function(){
-    $ionicLoading.show({
-      template: '<ion-spinner icon=\'ripple\' class=\'spinner-light\'></ion-spinner>'
-    });
-  })
 })

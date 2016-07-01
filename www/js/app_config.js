@@ -57,6 +57,16 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     }
   })
 
+  .state('tab.change-password', {
+    url: '/changepassword',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/change-password.html',
+        controller: 'ChangePasswordCtrl'
+      }
+    }
+  })
+
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',

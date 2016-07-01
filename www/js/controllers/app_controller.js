@@ -30,6 +30,12 @@ controllers.controller('AppCtrl', function($scope, $ionicHistory, $state, $ionic
     });
   });
 
+  ionic.on(EVENTS.asynchronousUserEvents, function(){
+    $ionicLoading.show({
+      template: '<ion-spinner icon=\'ripple\' class=\'spinner-light\'></ion-spinner>'
+    });
+  })
+
   document.addEventListener('onAdLoaded', function(data){
     $ionicLoading.hide();
   });

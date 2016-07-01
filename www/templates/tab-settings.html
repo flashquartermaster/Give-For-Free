@@ -102,6 +102,16 @@
                   {{item.name}}
       </ion-toggle>
 
+      <ion-item class="item item-divider item-text-wrap" ng-show="!isSocialUser">
+        User
+      </ion-item>
+
+      <ion-item class="item" ng-show="!isSocialUser">
+        <button class="button button-block button-stable button-outline" on-tap="changePassword();">
+          Change Password
+        </button>
+      </ion-item>
+
     </ion-list>
 
     <ion-list>

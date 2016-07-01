@@ -1,19 +1,30 @@
-controllers.controller('HomeCtrl', function($scope, $state, Settings, AdUtil) {
+controllers.controller('HomeCtrl', function($scope, $state, $rootScope, $ionicHistory, Settings, AdUtil, User) {
 
   $scope.firstname = '';
 
-  function onViewEnter() {
-    var user = Ionic.User.current();
+  function onViewEnter(event, data) {
+    console.log('<GFF> HomeCtrl: onViewEnter: recovered password: ' + $rootScope.hasRequestedNewPassword );
 
-    console.log('<GFF> HomeCtrl: onViewEnter: user: ' + JSON.stringify( user ) );
+    if( $rootScope.hasRequestedNewPassword)
+    {
+      $ionicHistory.nextViewOptions({
+         disableAnimate: true
+      });
+      $state.go('tab.change-password');
+    } else {
+      var user = Ionic.User.current();
 
-    $scope.avatar = user.details.image;
-    $scope.firstname = user.details.name.split(" ")[0];
+      //console.log('<GFF> HomeCtrl: onViewEnter: user: ' + JSON.stringify( user ) );
 
-    if(AdMob){//Because android need this on start up apparently
-      var platform = Settings.getPlatformSettings();
-      console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ' + platform.developerBanner );
-      AdUtil.showBannerAd( platform.developerBanner );
+      $scope.isAvatar = User.isSocialUser();
+      $scope.avatar_url = user.details.image;
+      $scope.firstname = user.details.name.split(" ")[0];
+
+      if(AdMob){//Because android need this on start up apparently
+        var platform = Settings.getPlatformSettings();
+        console.log('<GFF> HomeCtrl showHomeAd Banner AdUnit: ' + platform.developerBanner );
+        AdUtil.showBannerAd( platform.developerBanner );
+      }
     }
   }
 

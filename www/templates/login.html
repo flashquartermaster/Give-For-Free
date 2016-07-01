@@ -13,7 +13,7 @@
 
         <div class="item">
 
-          <form name="loginForm" class="list " ng-show="isLogin" novalidate>
+          <form name="loginForm" class="list password-form" ng-show="isLogin" novalidate>
 
             <ion-list>
 
@@ -24,7 +24,8 @@
 
               <label class="item item-input">
                   <span class="input-label">Password</span>
-                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-focus="clearErrorMessage();" required>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password"
+                          ng-focus="clearErrorMessage();" ui-show-password required>
               </label>
 
               <ion-toggle toggle-class="toggle-positive" ng-model="data.remember">Stay Logged In? {{data.remember ? 'On' : 'Off'}}</ion-toggle>
@@ -44,7 +45,7 @@
 
           </form>
 
-          <form name="signupForm" class="list" ng-show="isSignUp" novalidate>
+          <form name="signupForm" class="list password-form" ng-show="isSignUp" novalidate>
 
             <ion-list>
 
@@ -65,7 +66,8 @@
 
               <label class="item item-input">
                   <span class="input-label">Password</span>
-                  <input type="password" placeholder="********" ng-model="data.password" name="password" ng-focus="clearErrorMessage();" ng-minlength="5" required>
+                  <input type="password" placeholder="********" ng-model="data.password" name="password"
+                          ng-focus="clearErrorMessage();" ng-minlength="5" ui-show-password required>
               </label>
 
               <p class="error-message" ng-show="signupForm.email.$invalid && !signupForm.$pristine">Please enter a valid email address</p>

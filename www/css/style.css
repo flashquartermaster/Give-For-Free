@@ -14,6 +14,14 @@ p.message {
   margin-top: 10px;
 }
 
+.password-form .item-input>input+button.activated {
+  opacity: 1;
+}
+
+.password-form .item-input>input+button>i {
+  font-size: 24px;
+}
+
 /*Give List*/
 img.charity-list-item-disabled {
   opacity: 0.3;

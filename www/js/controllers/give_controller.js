@@ -6,7 +6,7 @@ controllers.controller('GiveCtrl', function($scope, $ionicPopover, $ionicScrollD
   $scope.isDisabledItems = false;
   $scope.isSearch = false;
 
-  function onBeforeEnter(){
+  function onBeforeEnter(event, data){
     $scope.activeLocations = Settings.getActiveLocations();
     $scope.charities = Charities.all();
     $ionicScrollDelegate.scrollTop();

@@ -3,8 +3,8 @@
 
     <div class="card">
 
-      <div class="item item-text-wrap item-avatar text-center">
-        <img ng-src="{{avatar}}">
+      <div class="item item-text-wrap text-center {{isAvatar ? 'item-avatar' : ''}}">
+        <img ng-show="isAvatar" ng-src="{{avatar_url}}">
         <h2>Welcome {{firstname}}</h2>
       </div>
 
