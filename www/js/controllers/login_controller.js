@@ -1,4 +1,4 @@
-controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, $openFB, $cordovaOauth, $cordovaOauthUtility, $http, Settings, Charities, EVENTS) {
+controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ionicLoading, $cordovaOauth, $cordovaOauthUtility, $http, Settings, Charities, EVENTS) {
   $scope.data = {};
   $scope.isLogin = true;
   $scope.isSignUp = false;
@@ -146,111 +146,8 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
     Ionic.Auth.login('basic', loginSettings(), loginDetails() ).then(basicLoginSuccess, ionicLoginFailure);
   }
 
-  function facebookLoginSuccess( newUser ){
-    console.log('<GFF> LoginCtrl: facebookLoginSuccess: ' + JSON.stringify( newUser ) );
-    //console.log('<GFF> LoginCtrl: facebookLoginSuccess: ' + JSON.stringify( Ionic.User.current() ) );
-    var user = Ionic.User.current();
-
-    //https://graph.facebook.com/oauth/access_token?client_id=539216159536968&client_secret=3bb496b760f5d92408454e6b53e9f9d3&grant_type=client_credentials
-
-    function openFBLoginSuccess( loginSuccessData ){
-      console.log('<GFF> LoginCtrl: facebookLoginSuccess: openFBLoginSuccess: success: ' + JSON.stringify( loginSuccessData ) );
-      //"status":"connected",
-      //"authResponse":{
-      //  "token":"EAAHqaguld0gBAM3n2BePiPZCPk5kiMNswWrGqOjn9C8AWO4nqGwpLfDAycWU2p6bQdLViPb6U2vOEEcyfBCijFXTqetMfIusopK1Kvh8Hu5to1zMcbnBDS0YZB8vrzLC9kwcSLMQXOkgZCtFpSWAdfvGG3m9mIZD"
-      //}
-      //console.log('<GFF> LoginCtrl: facebookLoginSuccess: login: success: for user: ' + user.details.facebook_id );
-
-      function openFBApiSuccess( apiSuccess ){
-        console.log('<GFF> LoginCtrl: facebookLoginSuccess: api: /me/fields: success: ' + JSON.stringify( apiSuccess ) );
-
-        user.details.name = apiSuccess.name;
-        user.details.image = apiSuccess.picture.data.url;
-        user.details.email = apiSuccess.email;//cant see this yet in the Ionic User Admin area but storing it anyway
-        user.set('email', apiSuccess.email );//make email visible in Ionic User Admin area
-
-        if( user.get('settings') == undefined ){
-          //New user will have no settings in custom data
-          user.set('settings', Settings.getInitialSettings() );
-        }
-
-        if( user.get('charities') == undefined ){
-          user.set('charities', Charities.getInitialCharities() );
-        }
-
-        function userSaveSuccess( saveSuccess ) {
-          console.log('<GFF> LoginCtrl: facebookLoginSuccess: userSaveSuccess: success: ' + JSON.stringify( saveSuccess ) );
-          $state.go('tab.home');
-        };
-
-        function userSaveFailure( saveError ) {
-          console.log('<GFF> LoginCtrl: facebookLoginSuccess: userSaveFailure: error: ' + JSON.stringify( saveError ) );
-          //{"response":{
-          //  "seq_id":3,
-          //  "id":"3: PATCH https://api.ionic.io/auth/users/cbda85d3-5c74-4ff0-9516-10df9ec3821c",
-          //  "_id":"3: PATCH https://api.ionic.io/auth/users/cbda85d3-5c74-4ff0-9516-10df9ec3821c",
-          //  "timeoutTimer":179,
-          //  "statusCode":400,
-          //  "body":{
-          //    "error":{
-          //      "link":null,
-          //      "message":"Illegal operator '$$hashKey'","type":"BadRequest"
-          //    },"meta":{"status":400,"request_id":"67ec65e7-3e0f-4e6e-8aac-4c781bb55f82","version":"2.0.0-beta.0"}}},"error":{}}
-          var errorMessage = formatErrorMessage( saveError.response.body.error.message );
-          errorMessage += formatErrorMessage( 'There has been an error saving your details. '
-          + 'If you continue to experience difficulties please contact support@giveforfreeonline.org' );
-          setMessage(errorMessage);
-        };
-
-        user.save().then( userSaveSuccess, userSaveFailure );
-      }
-
-      function openFBApiFailure( apiError ){
-        console.log('<GFF> LoginCtrl: facebookLoginSuccess: api: /me/fields: error: ' + JSON.stringify( apiError ) );
-        //{"data":{
-        //  "error":{
-        //    "message":"Unsupported get request. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api",
-        //    "type":"GraphMethodException",
-        //    "code":100,"fbtrace_id":"FiYvPL70dNH"
-        //  }
-        //},"status":400,
-        //"config":{"method":"GET","transformRequest":[null],"transformResponse":[null],
-        //"url":"https://graph.facebook.com?fields=email%2Cname%2Cpicture&access_token=EAAHqaguld0gBALK0HvhdXZAZA2RJljFvrC80B4KoW1vtYbtYaF66t8hsJkhxwgEIxWzhf6mpBM0136WvZA0gwcFsJ8cIiDslf3pB58J0guhuvq3r0zCCT86ucnSaUivqjL89tpQRclETvA6desD54enrbAOGV0ZD",
-        //"headers":{"Accept":"application/json, text/plain, "}},"statusText":"Bad Request"}
-        var errorMessage = formatErrorMessage( 'Facebook Error: ' + apiError.data.error.message );
-        setMessage(errorMessage);
-      }
-
-      $openFB.api({path: '/me',params: {fields: 'email,name,picture'}}).then( openFBApiSuccess, openFBApiFailure );
-    }
-
-    function openFBLoginFailure( loginError ) {
-      console.log('<GFF> LoginCtrl: facebookLoginSuccess: openFBLoginFailure: error: ' + JSON.stringify( loginError ) );
-      //{"error":"user_cancelled","error_description":"User cancelled login process","error_reason":"user_cancelled"}
-      var errorMessage = formatErrorMessage( 'Login Error: ' + loginError.error_description );
-      setMessage(errorMessage);
-    }
-
-    $openFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then( openFBLoginSuccess, openFBLoginFailure );
-
-  }
-
   $scope.doFacebookLogin = function(){
     console.log('<GFF> LoginCtrl : doFacebookLogin: ' + JSON.stringify($scope.data));
-
-    /*
-    $openFB.init({
-      appId: '539216159536968',
-      cordovaOauthCallback: 'http://api.giveforfreeonline.org/oauthcallback.html'
-    });
-    */
-
-    //Ionic.Auth.login('facebook', {'remember': true}).then(facebookLoginSuccess, ionicLoginFailure);
-
-    /*var flowUrl = "https://www.facebook.com/v2.6/dialog/oauth?client_id=" + clientId + "&redirect_uri=" + redirect_uri + "&response_type=token&scope=" + appScope.join(",");
-    if(options !== undefined && options.hasOwnProperty("auth_type")) {
-      flowUrl += "&auth_type=" + options.auth_type;
-    }*/
 
     $cordovaOauth.facebook('539216159536968',["email", "public_profile"]).then(
         function(cordovaOauthResult) {
@@ -266,7 +163,94 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
                     }
             ).then(
             function(facebookApiResult) {
-              console.log('<GFF> LoginCtrl : http facebook api call : sucess: ' + JSON.stringify(facebookApiResult));
+              //console.log('<GFF> LoginCtrl : http facebook api call : sucess: ' + JSON.stringify(facebookApiResult));
+
+              /*
+              {"data":{
+                "name":"Tom Coxen",
+                "email":"tom@flashquartermaster.com",
+                "picture":{"data":{"is_silhouette":false,"url":"https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/13507116_10153588713215825_2193649314685503822_n.jpg?oh=7221bc3d6d7df42100bd5eda9a0dfdd1&oe=580008EC"}},
+                "id":"10153574027365825"},"status":200,"config":{"method":"GET","transformRequest":[null],"transformResponse":[null],"params":{"access_token":"EAAHqaguld0gBAGQCGk6og8gN3P8tZCLbwtQY6z05gaYaI11o5YmOcVBgP0sKA4hStCykdlZCFZCWwlsjqyDNIMDLcXU9byhEOAwbiwbQZAeeiBZAeeFgSSZCH8F1DbTR3jN0ZBhQMvJ8oR0rqixrEq8OZA7ZBx5iZAfPkZD","fields":"name,email,picture","format":"json"},"url":"https://graph.facebook.com/v2.6/me","headers":{"Accept":"application/json, text/plain,"}},"statusText":"OK"}
+              */
+
+              console.log('<GFF> LoginCtrl : facebook api: id: ' + facebookApiResult.data.id);
+              console.log('<GFF> LoginCtrl : facebook api: name: ' + facebookApiResult.data.name);
+              console.log('<GFF> LoginCtrl : facebook api: email: ' + facebookApiResult.data.email);
+              console.log('<GFF> LoginCtrl : facebook api: picture: ' + facebookApiResult.data.picture.data.url);
+
+              if( facebookApiResult.data.email == undefined)
+              {
+                var errorMessage = formatErrorMessage( 'You do not have a confirmed email address associated with your facebook account '
+                + 'so we are unable to log you in. Please either add or confim your facebook email address or use the "create an account" '
+                + 'button instead');
+                setMessage(errorMessage);
+              } else {
+
+                ionic.trigger(EVENTS.asynchronousUserEvents);
+                //do sign up or attempt login then do sign up and login
+                Ionic.Auth.signup( {
+                  email: facebookApiResult.data.email,
+                  password: facebookApiResult.data.id,
+                  name: facebookApiResult.data.name,
+                  image: facebookApiResult.data.picture.data.url,
+                  username: facebookApiResult.data.email,
+                  custom: {
+                    settings: Settings.getInitialSettings(),
+                    charities: Charities.getInitialCharities(),
+                    facebook_id: facebookApiResult.data.id
+                  }
+                }).then(
+                  function(signUpSuccess){
+                    console.log('<GFF> LoginCtrl : twitter api: sign up success: ' + JSON.stringify(signUpSuccess));
+                    Ionic.Auth.login('basic', {remember: true}, {
+                      email: facebookApiResult.data.email,
+                      password: facebookApiResult.data.id
+                    } ).then(basicLoginSuccess, ionicLoginFailure);
+                  },
+                  function(signUpError){
+                    console.log('<GFF> LoginCtrl : facebook api: sign up error: ' + JSON.stringify(signUpError));
+
+                    var i, arr = signUpError.errors, len = arr.length, errorMessage = '';
+
+                    for (i = 0; i < len; i++) {
+                      console.log('<GFF> LoginCtrl : facebook api: sign up error '+i+': ' + arr[i]);
+                      switch (arr[i]) {
+                        case 'required_email':
+                          errorMessage += formatErrorMessage( 'You must supply and email address' );
+                          break;
+                        case 'required_password':
+                          errorMessage += formatErrorMessage( 'You must supply a password' );
+                          break;
+                        case 'conflict_username':
+                          errorMessage += formatErrorMessage( 'This user name is currently in use' );
+                          break;
+                        case 'invalid_email':
+                          errorMessage += formatErrorMessage( 'You must supply a valid email address' );
+                          break;
+                        case 'invalid_password':
+                          errorMessage += formatErrorMessage( 'There was a problem with your username or password' );
+                          break;
+                        case 'conflict_email'://conflict_email so login as they aleady have an account
+                          Ionic.Auth.login('basic', {remember: true}, {
+                            email: facebookApiResult.data.email,
+                            password: facebookApiResult.data.id
+                          }).then(basicLoginSuccess, ionicLoginFailure);
+                          break;
+                      }
+
+                    }
+
+                    if( errorMessage.length > 0 )
+                    {
+                      errorMessage += formatErrorMessage( 'There has been an error signing you up in please try again. '
+                      + 'If you continue to experience difficulties please contact support@giveforfreeonline.org' );
+                      setMessage(errorMessage);
+                      $ionicLoading.hide();
+                    }
+
+                  });
+                }
+
             },
             function(facebookApiError){
               console.log('<GFF> LoginCtrl : http facebook api call : error: ' + JSON.stringify(facebookApiError));
@@ -304,26 +288,6 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
             setMessage(errorMessage);
         });
-
-    /*
-    //This code is pointless we will never arrive at the point where we are on the login page and
-    //the user is logged in using openFB we are only using openFB to retreive data from the graph api
-    //after we have logged in with Ionic Auth
-
-    $openFB.isLoggedIn().then(
-      function( success ) {
-          console.log('<GFF> LoginCtrl: facebookLoginSuccess: isLoggedIn: success: ' + JSON.stringify( success ) );
-          $state.go('tab.home');
-      },
-      function( error ) {
-          console.log('<GFF> LoginCtrl: facebookLoginSuccess: isLoggedIn: error: ' + JSON.stringify( error ) );
-          if( error.status == 'unknown'){
-            Ionic.Auth.login('facebook', {'remember': true}).then(facebookLoginSuccess, ionicLoginFailure);
-          } else {
-            //Dont fail silently
-          }
-      });
-      */
   }
 
   $scope.doTwitterLogin = function(){
@@ -367,13 +331,11 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
 
           $http( twitterApiRequest ).then(
               function(twitterApiResult) {
-                //console.log('<GFF> LoginCtrl : twitter api: sucess: ' + JSON.stringify(twitterApiResult));
+                //console.log('<GFF> ****** LoginCtrl : twitter api: sucess: ' + JSON.stringify(twitterApiResult));
+                console.log('<GFF> LoginCtrl : twitter api: id: ' + twitterApiResult.data.id);
                 console.log('<GFF> LoginCtrl : twitter api: name: ' + twitterApiResult.data.name + ', and ' + twitterApiResult.data.screen_name);
                 console.log('<GFF> LoginCtrl : twitter api: email: ' + twitterApiResult.data.email);
                 console.log('<GFF> LoginCtrl : twitter api: picture: ' + twitterApiResult.data.profile_image_url + ', and ' + twitterApiResult.data.profile_image_url_https);
-
-                //TESTING ONLY REMOVE ME
-                twitterApiResult.data.email = 'tom@flashquartermaster.com';
 
                 if( twitterApiResult.data.email == undefined)
                 {
@@ -383,12 +345,13 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
                   setMessage(errorMessage);
                 } else {
                   ionic.trigger(EVENTS.asynchronousUserEvents);
-                  //do sign up or attenmpt login then do sign up and login
+                  //do sign up or attempt login then do sign up and login
                   Ionic.Auth.signup( {
                     email: twitterApiResult.data.email,
-                    password: twitterApiResult.data.screen_name,
+                    password: twitterApiResult.data.id_str,
                     name: twitterApiResult.data.name,
                     image: twitterApiResult.data.profile_image_url_https,
+                    username: twitterApiResult.data.email,
                     custom: {
                       settings: Settings.getInitialSettings(),
                       charities: Charities.getInitialCharities(),
@@ -399,7 +362,7 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
                       console.log('<GFF> LoginCtrl : twitter api: sign up success: ' + JSON.stringify(signUpSuccess));
                       Ionic.Auth.login('basic', {remember: true}, {
                         email: twitterApiResult.data.email,
-                        password: twitterApiResult.data.screen_name
+                        password: twitterApiResult.data.id_str
                       } ).then(basicLoginSuccess, ionicLoginFailure);
                     },
                     function(signUpError){
@@ -422,10 +385,13 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
                           case 'invalid_email':
                             errorMessage += formatErrorMessage( 'You must supply a valid email address' );
                             break;
+                          case 'invalid_password':
+                            errorMessage += formatErrorMessage( 'There was a problem with your username or password' );
+                            break;
                           case 'conflict_email'://conflict_email so login as they aleady have an account
                             Ionic.Auth.login('basic', {remember: true}, {
                               email: twitterApiResult.data.email,
-                              password: twitterApiResult.data.screen_name
+                              password: twitterApiResult.data.id_str
                             }).then(basicLoginSuccess, ionicLoginFailure);
                             break;
                         }
@@ -526,6 +492,9 @@ controllers.controller('LoginCtrl', function($scope, $ionicHistory, $state, $ion
           break;
         case 'invalid_email':
           errorMessage += formatErrorMessage( 'You must supply a valid email address' );
+          break;
+        case 'invalid_password':
+          errorMessage += formatErrorMessage( 'There was a problem with your username or password' );
           break;
       }
     }
