@@ -4,7 +4,10 @@ controllers.controller('HomeCtrl', function($scope, $state, Settings, AdUtil) {
 
   function onViewEnter() {
     var user = Ionic.User.current();
+
     console.log('<GFF> HomeCtrl: onViewEnter: user: ' + JSON.stringify( user ) );
+
+    $scope.avatar = user.details.image;
     $scope.firstname = user.details.name.split(" ")[0];
 
     if(AdMob){//Because android need this on start up apparently
