@@ -1,9 +1,10 @@
 {
-  "name": "HelloIonic",
+  "name": "Give For Free",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.3.1",
-    "ionic-platform-web-client": "^0.7.1"
+    "ionic-platform-web-client": "^0.7.1",
+    "angular-mocks": "1.5.3"
   },
   "resolutions": {
     "angular": "1.5.3"
