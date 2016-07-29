@@ -5,10 +5,10 @@
 
       <div class="item item-text-wrap text-center {{isAvatar ? 'item-avatar' : ''}}">
         <img ng-show="isAvatar" ng-src="{{avatar_url}}">
-        <h2>Welcome {{firstname}}</h2>
+        <h2 id="headerText">Welcome {{firstname}}</h2>
       </div>
 
-      <div class="item item-text-wrap">
+      <div id="bodyText" class="item item-text-wrap">
         <p>Simply tap on the heart and choose a charity to support and wait for the advert to load or alternatively
           choose the top one from the list and swipe left and right through them all.</p>
         <p>Every view will generate money for your chosen charity.</p>
@@ -22,7 +22,7 @@
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-social-facebook" href="https://www.facebook.com/Give-For-Free-643061692510804/"></a>
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-social-twitter" href="https://twitter.com/_giveforfree_"></a>
         <a on-tap="onOpenLink(this);" class="button button-icon icon ion-email" href="mailto:support@giveforfreeonline.org"></a>
-        <button on-tap="doLogOut();"class="button button-dark  button-clear icon-left ion-log-out">Sign Out</button>
+        <button id="signOutButton" ng-click="doLogOut();" class="button button-dark  button-clear icon-left ion-log-out">Sign Out</button>
       </div>
 
     </div>

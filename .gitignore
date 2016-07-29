@@ -1,5 +1,5 @@
-android.json
-ios.json
 bower_components
 node_modules
 other_components
+.idea
+platforms

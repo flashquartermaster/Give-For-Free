@@ -18,23 +18,23 @@
             <ion-list>
 
               <label class="item item-input">
-                  <span class="input-label">Email</span>
-                  <input type="email" placeholder="name@domain.com" ng-model="data.email" name="email" ng-focus="clearErrorMessage();" required>
+                  <span class="input-label" name="loginFormEmailLabel">Email</span>
+                  <input id="loginFormEmail" type="email" placeholder="name@domain.com" ng-model="data.email" name="loginFormEmail" ng-focus="clearErrorMessage();" required>
               </label>
 
               <label class="item item-input">
                   <span class="input-label">Password</span>
-                  <input type="password" placeholder="********" ng-model="data.password" name="password"
+                  <input id="loginFormPassword" type="password" placeholder="********" ng-model="data.password" name="password"
                           ng-focus="clearErrorMessage();" ui-show-password required>
               </label>
 
-              <ion-toggle toggle-class="toggle-positive" ng-model="data.remember">Stay Logged In? {{data.remember ? 'On' : 'Off'}}</ion-toggle>
+              <ion-toggle id="loginFormRememberToggle" toggle-class="toggle-positive" ng-model="data.remember">Stay Logged In? {{data.remember ? 'On' : 'Off'}}</ion-toggle>
 
               <p class="error-message" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine">Please enter a valid email address</p>
               <div ng-bind-html="message"></div>
 
-              <button class="button button-stable button-block" on-tap="doLogin();" ng-disabled="loginForm.$invalid">Log in</button>
-              <button class="button button-positive button-block button-clear squash-button" on-tap="showCreateAccount();">Or create an account</button>
+              <button class="button button-stable button-block" ng-click="doLogin();" ng-disabled="loginForm.$invalid" name="logInButton" id="loginFormLogInButton">Log in</button>
+              <button class="button button-positive button-block button-clear squash-button" on-tap="showCreateAccount();" id="loginFormSignUpButton">Or create an account</button>
               <button class="button button-positive button-block button-clear squash-button"
                       on-tap="showForgotPassword();"
                       ng-show="forgotPassword">Forgot your password?</button>

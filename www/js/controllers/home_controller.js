@@ -5,7 +5,7 @@ controllers.controller('HomeCtrl', function($scope, $state, $rootScope, $ionicHi
   function onViewEnter(event, data) {
     console.log('<GFF> HomeCtrl: onViewEnter: recovered password: ' + $rootScope.hasRequestedNewPassword );
 
-    if( $rootScope.hasRequestedNewPassword)
+    if( $rootScope.hasRequestedNewPassword )
     {
       $ionicHistory.nextViewOptions({
          disableAnimate: true
