@@ -1,14 +1,14 @@
-var appLocation = '/Users/tom/Google\ Drive/Apps/Give\ For\ Free/platforms/ios/DerivedData/Give\ For\ Free/Build/Products/Debug-iphonesimulator/Give\ For\ Free.app';
+var appLocation = '/Users/tom/Google\ Drive/Apps/Give\ For\ Free/platforms/ios/build/emulator/Give\ For\ Free.app';
 
 exports.config = {
     seleniumAddress: 'http://localhost:4723/wd/hub',
 
-    jasmineNodeOpts: {
+    /*jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 30000,
         isVerbose: true,
         includeStackTrace: true
-    },
+    },*/
 
     specs: [
         'features/*.feature'
@@ -28,7 +28,7 @@ exports.config = {
         'appium-version': '1.5.3',
         platformName: 'iOS',
         platformVersion: '9.3',
-        deviceName: 'iPhone 5s',
+        deviceName: 'iPhone 6s Plus',
         browserName: "",
         autoWebview: true,
         fullReset: true,
@@ -53,12 +53,11 @@ exports.config = {
         //To navigate using file:// rather than http://
         var defer = protractor.promise.defer();
 
-        browser.ignoreSynchronization = true;//Angular not found
+        browser.ignoreSynchronization = true;//To stop Angular not found error
 
         browser.executeScript('return window.location;').then( function(location){
             browser.resetUrl = 'file://';
             browser.baseUrl = location.origin + location.pathname;
-            console.log('******: browser.baseUrl: ' + browser.baseUrl);
             defer.fulfill();
         });
 

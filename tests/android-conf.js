@@ -3,12 +3,12 @@ var appLocation = '/Users/tom/Google\ Drive/Apps/Give\ For\ Free/platforms/andro
 exports.config = {
     seleniumAddress: 'http://localhost:4723/wd/hub',
 
-    jasmineNodeOpts: {
+    /*jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 30000,
         isVerbose: true,
         includeStackTrace: true
-    },
+    },*/
 
     specs: [
         'features/*.feature'
@@ -46,20 +46,12 @@ exports.config = {
 
         wdBridge.initFromProtractor(exports.config);
 
-        //Use http://
-        //browser.resetUrl = 'http://';
-
-        //WEBVIEW NATIVE_APP CHROMIUM
-        //wdBrowser.contexts();
-        //wdBrowser.context('WEBVIEW');
-
         //To navigate using file:// rather than http://
         var defer = protractor.promise.defer();
 
          browser.executeScript('return window.location;').then( function(location){
              browser.resetUrl = 'file://';
              browser.baseUrl = location.origin + location.pathname;
-             console.log('******: browser.baseUrl: ' + browser.baseUrl);
              defer.fulfill();
          });
 

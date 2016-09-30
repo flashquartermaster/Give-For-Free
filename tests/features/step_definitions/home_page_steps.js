@@ -4,13 +4,7 @@ module.exports = function () {
 
     //Uses @requiresLogin tagged Before hook that brings us to the home page
     this.Given(/^I am on the home page$/, function( callback ){
-        //file://
-        //browser.ignoreSynchronization = true;
         browser.get( '#/tab.home' );
-        //browser.ignoreSynchronization = false;
-
-        //browser.waitForAngular();
-
         this.expect( browser.getLocationAbsUrl() ).to.eventually.equal('/tab/home').and.notify(callback);
     });
 
@@ -50,8 +44,6 @@ module.exports = function () {
     this.Then(/^can sign out of the app$/, function (callback) {
         var signOutButton = element( by.id('signOutButton') );
         signOutButton.click();
-
-        //browser.waitForAngular();
 
         this.expect( browser.getLocationAbsUrl() ).to.eventually.equal('/login');
 

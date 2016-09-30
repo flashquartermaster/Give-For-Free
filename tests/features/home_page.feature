@@ -6,7 +6,7 @@ Feature: Home Page
   Navigate externally
   And navigate around the app from there
 
-  @requiresLogin @requiresLogout @dev
+  @requiresLogin @requiresLogout
   Scenario: Home Page Elements
     Given I am on the home page
     Then I am greeted
