@@ -3,3 +3,4 @@ node_modules
 other_components
 .idea
 platforms
+coverage

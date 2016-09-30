@@ -1,0 +1,8 @@
+{
+    "evil": true,
+    "undef": true,
+    "globals": {
+        "angular": true,
+        "cordova": true
+    }
+}
