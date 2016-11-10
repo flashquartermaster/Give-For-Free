@@ -7,7 +7,7 @@
 
 ### How do I get set up? ###
 
-* Its an Ionic 1 project so 'npm' insftalling should do it
+* Its an Ionic 1 project so 'npm' installing should do it
 
 ### Contribution guidelines ###
 
