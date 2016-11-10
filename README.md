@@ -17,7 +17,7 @@
 
 ### Who do I talk to? ###
 
-* flashquartermaster is can be contacted from the website www.giveforfreeonline.org or at info@giveforfreeonline.org
+* Flashquartermaster is can be contacted from there at GitHub, at the website www.giveforfreeonline.org or at info@giveforfreeonline.org
 
 ### What's the road map ###
 
