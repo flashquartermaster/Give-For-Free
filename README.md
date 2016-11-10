@@ -1,29 +1,30 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* This is a proof of concept of an app that was designed to link charitable causes with advertising units so that anyone could interact with the app and create revenue fo rtheir chosen charities without having to spend any money themselves.
+* Version: prototype.
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Its an Ionic 1 project so 'npm' insftalling should do it
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Write tests
+* Have fun
+* Raise the consiousnes of the whole f**king world
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* flashquartermaster is tom@giveforfreeonline.org
+
+### What's the road map ###
+
+Whoever wants to pick this up can help direct it
+
+* App Font End, https://trello.com/b/xmdn
+* Client facing Services: https://trello.com/b/0xs4g9CW3vWu
+* Back End: https://trello.com/b/y3rYxaVZ (Not much there we are using Ionic.io)
+* The backlogs and ideas: https://trello.com/b/0XdhHErB
+* The Business Administration: https://trello.com/b/fkRAgOeA
