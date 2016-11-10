@@ -2,7 +2,7 @@
 
 ### What is this repository for? ###
 
-* This is a proof of concept of an app that was designed to link charitable causes with advertising units so that anyone could interact with the app and create revenue fo rtheir chosen charities without having to spend any money themselves.
+* This is a proof of concept of an app that was designed to link charitable causes with advertising units so that anyone could interact with the app and create revenue for their chosen charities without having to spend any money themselves.
 * Version: prototype.
 
 ### How do I get set up? ###
@@ -19,7 +19,7 @@
 
 * Flashquartermaster is can be contacted from there at GitHub, at the website www.giveforfreeonline.org or at info@giveforfreeonline.org
 
-### What's the road map ###
+### What's the road map? ###
 
 Whoever wants to pick this up can help direct it
 
