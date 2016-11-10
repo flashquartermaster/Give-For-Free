@@ -30,3 +30,7 @@ Whoever wants to pick this up can help direct it
 * The backlogs and ideas: https://trello.com/b/0XdhHErB
 * The Business Administration: https://trello.com/b/fkRAgOeA
 * Slack Channel: https://giveforfree.slack.com
+
+### Why Bother? ###
+
+* This project is a Give Back Generation project http://theartofmeditation.org/give-back-generation/
