@@ -14,7 +14,7 @@
 
 * Write tests
 * Have fun
-* Raise the consiousnes of the whole f**king world
+* Raise consiousnes :)
 
 ### Who do I talk to? ###
 
