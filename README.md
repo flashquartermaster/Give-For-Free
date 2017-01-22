@@ -29,7 +29,6 @@ Whoever wants to pick this up can help direct it
 * Back End: https://trello.com/b/y3rYxaVZ (Not much there we are using Ionic.io)
 * The backlogs and ideas: https://trello.com/b/0XdhHErB
 * The Business Administration: https://trello.com/b/fkRAgOeA
-* Slack Channel: https://giveforfree.slack.com
 
 ### Why Bother? ###
 
