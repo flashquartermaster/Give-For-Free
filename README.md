@@ -13,8 +13,6 @@
 ### Contribution guidelines ###
 
 * Write tests
-* Have fun
-* Raise consiousnes :)
 
 ### Who do I talk to? ###
 
@@ -22,14 +20,4 @@
 
 ### What's the road map? ###
 
-Whoever wants to pick this up can help direct it
-
-* App Font End: https://trello.com/b/xmdn3vWu
-* Client facing Services: https://trello.com/b/0xs4g9CW
-* Back End: https://trello.com/b/y3rYxaVZ (Not much there we are using Ionic.io)
-* The backlogs and ideas: https://trello.com/b/0XdhHErB
-* The Business Administration: https://trello.com/b/fkRAgOeA
-
-### Why Bother? ###
-
-* This project is a Give Back Generation project http://theartofmeditation.org/give-back-generation/
+* It's dead Jim
