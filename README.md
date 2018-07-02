@@ -9,15 +9,3 @@
 
 * Its an Ionic 1 project so 'npm' installing should do it
 * You will need to create a free AdMob account with Google and some Ad Units to add to the data to ensure that the right money is tracked 
-
-### Contribution guidelines ###
-
-* Write tests
-
-### Who do I talk to? ###
-
-* Flashquartermaster is can be contacted from here at GitHub, at the website www.giveforfreeonline.org or at info@giveforfreeonline.org
-
-### What's the road map? ###
-
-* It's dead Jim
